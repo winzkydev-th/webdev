@@ -1,3 +1,5 @@
+import {publicSeoSite} from '../../../lib/public-seo';
+import {pageMetadata,structuredPage,safeJsonLd} from '../../../lib/seo';
 import {publicContent} from '../../../lib/public-content';
 export const dynamic='force-dynamic';
 import QuoteForm from '../../../components/quote-form';
@@ -10,15 +12,18 @@ type Props={params:Promise<{locale:string;slug?:string[]}>};
 export async function generateMetadata({params}:Props):Promise<Metadata>{
  const {locale,slug=[]}=await params; if(!isLocale(locale)) return {};
  const index=slugs.indexOf(slug.join('/') as typeof slugs[number]);
- const content=await publicContent(slug.join('/'),locale);
- return {title:content?.title??((copy[locale].nav[index]||'KPN')+' | KPN WAGON LOGISTICS'),description:content?.description??copy[locale].intro,robots:{index:false,follow:false}};
+ if(index<0)notFound();
+ const [content,site]=await Promise.all([publicContent(slug.join('/'),locale),publicSeoSite()]);
+ return pageMetadata(locale,slug.join('/'),content,site);
 }
 export default async function Page({params}:Props){
  const {locale,slug=[]}=await params; if(!isLocale(locale)) notFound();
  const route=slug.join('/'); const index=slugs.indexOf(route as typeof slugs[number]);if(index<0)notFound();
  const t=copy[locale];const ui=interfaceCopy[locale];const content=await publicContent(route,locale);const body=content&&<div>{content.testOnly&&<p className="test-notice">{ui.testContent}</p>}<p style={{whiteSpace:'pre-wrap'}}>{content.body.lead}</p>{content.body.sections.map((s,i)=><section key={i}><h2>{s.heading}</h2><p style={{whiteSpace:'pre-wrap'}}>{s.text}</p></section>)}</div>;
+ const schema=structuredPage(locale,route,content,await publicSeoSite());
  const testMode=testIntakeEnabled({mode:process.env.QUOTE_INTAKE_MODE,appEnv:process.env.APP_ENV,origin:process.env.APP_ORIGIN,privacyVersion:process.env.PRIVACY_NOTICE_VERSION,rateSecret:process.env.RATE_LIMIT_SECRET});
  return <><a className="skip" href="#content">{t.skip}</a><div className="draft">{t.draft}</div>
+ {schema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:safeJsonLd(schema)}}/>}
  <header><Link aria-label="KPN WAGON LOGISTICS COMPANY LIMITED" className="brand" href={'/'+locale}><span className="monogram" aria-hidden="true">KPN<span>↗</span></span><span>WAGON<small>LOGISTICS</small></span></Link>
  <nav aria-label={ui.mainNav}>{[0,1,2,8,9].map(i=><Link key={i} href={'/'+locale+'/'+slugs[i]} aria-current={i===index?'page':undefined}>{t.nav[i]}</Link>)}</nav>
  <nav className="languages" aria-label={ui.languageNav}>{locales.map((l,n)=><Link lang={copy[l].lang} aria-label={ui.languageNames[n]} key={l} href={'/'+l+(route?'/'+route:'')} hrefLang={copy[l].lang} aria-current={l===locale?'page':undefined}>{l==='zh'?'中文':l.toUpperCase()}</Link>)}</nav></header>

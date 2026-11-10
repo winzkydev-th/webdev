@@ -28,7 +28,10 @@
     "test:staff-disabled": "node tests/staff-disabled-smoke.mjs",
     "test:quotations": "node --test tests/quotations.integration.mjs",
     "test:quotation-http": "node tests/quotation-http-smoke.mjs",
-    "test:content": "node --test tests/content.integration.mjs"
+    "test:content": "node --test tests/content.integration.mjs",
+    "test:seo": "node --test tests/seo.acceptance.test.mjs",
+    "test:seo-http": "node tests/seo-http.acceptance.mjs",
+    "test:language": "node --test tests/language.acceptance.test.mjs"
   },
   "dependencies": {
     "next": "16.4.6",

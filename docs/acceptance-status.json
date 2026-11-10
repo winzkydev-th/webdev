@@ -21,6 +21,12 @@
   "productionReady": false,
   "evidence": {
     "AC-01": "docs/AC-01-REPORT.md",
-    "AC-02": "docs/AC-02-REPORT.md"
+    "AC-02": "docs/AC-02-REPORT.md",
+    "AC-13": "docs/AC-13-REPORT.md"
+  },
+  "pendingAcceptance": {
+    "AC-11": "Pending actual backup/restore drill; unchanged this work",
+    "AC-13": "Pending approved company domain and actual-host SEO verification",
+    "AC-14": "Pending full security acceptance; unchanged this work"
   }
 }

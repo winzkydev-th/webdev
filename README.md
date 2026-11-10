@@ -84,4 +84,12 @@ CMS_MODE defaults to disabled. test requires APP_ENV=development. live requires 
 
 Editor/Owner save new immutable drafts and submit review. Owner/Manager with recent MFA publish independently; self-publication is denied. Each locale is independent. Edits keep the old published pointer until the new review is approved. Unpublish is explicit and audited. Fixed pages, including News, are editable; individual article management/media library remain outside this implemented CMS slice.
 
-Default public pages remain noindex during development. Company content, identity, malware engine, cloud storage, backups, monitoring, production grants and deployment still require acceptance. Current unweighted development criteria: 9/14 (64.3%); not production ready.
+Default public pages remain noindex during development. Company content, identity, malware engine, cloud storage, backups, monitoring, production grants and deployment still require acceptance. Current unweighted development criteria: 11/14 (78.6%); not production ready.
+
+## Acceptance 01 / 02 / 13 continuation
+
+AC-01 and AC-02 passed development public-interface acceptance; see docs/AC-01-REPORT.md and docs/AC-02-REPORT.md with recorded evidence in docs/evidence/acceptance-01-02-13. Browser widths were emulated; official business copy and physical-device acceptance remain release checks.
+
+AC-13 remains Pending: no approved company domain. test:seo and test:language exercise only new acceptance logic; test:seo-http checks the ordinary localhost production build with indexing disabled. It makes HTTP requests only to 127.0.0.1:3000. Optional first argument is an evidence JSON path. It never enables a domain or inserts test data.
+
+Before enabling SEO, follow docs/AC-13-REPORT.md. No default production domain. PUBLIC_SITE_URL must exactly match approved system_settings.company value.domain as an HTTPS origin. Domain/SEO/company flags plus live CMS and non-test publication are required. Headers are compiled at build time: rebuild with approved configuration, then verify actual-host directives before launch. Staff/API noindex stays permanent. AC-11/AC-14 remain unaccepted.

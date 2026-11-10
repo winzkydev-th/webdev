@@ -1,0 +1,230 @@
+[
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ประเภทบริการทางเรือทางอากาศทางบกพิธีการศุลกากร",
+      "ชื่อผู้ติดต่อ (สมมติ)",
+      "อีเมลทดสอบ",
+      "โทรศัพท์ (สมมติ)",
+      "ต้นทาง",
+      "ปลายทาง",
+      "รูปแบบการขนส่งทางเรือFCL — เต็มตู้คอนเทนเนอร์LCL — ไม่เต็มตู้คอนเทนเนอร์",
+      "รายละเอียดสินค้า",
+      "ยืนยันว่าใช้ข้อมูลสังเคราะห์สำหรับทดสอบระบบเท่านั้น",
+      "ทดสอบตัวเลือกความยินยอมการตลาด (ไม่บังคับ และไม่มีการติดต่อจริง)"
+    ],
+    "path": "/th/request-a-quote",
+    "service": "sea",
+    "submit": "ส่งคำขอทดสอบ",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ประเภทบริการทางเรือทางอากาศทางบกพิธีการศุลกากร",
+      "ชื่อผู้ติดต่อ (สมมติ)",
+      "อีเมลทดสอบ",
+      "โทรศัพท์ (สมมติ)",
+      "ต้นทาง",
+      "ปลายทาง",
+      "น้ำหนักรวม (กิโลกรัม)",
+      "รายละเอียดสินค้า",
+      "ยืนยันว่าใช้ข้อมูลสังเคราะห์สำหรับทดสอบระบบเท่านั้น",
+      "ทดสอบตัวเลือกความยินยอมการตลาด (ไม่บังคับ และไม่มีการติดต่อจริง)"
+    ],
+    "path": "/th/request-a-quote",
+    "service": "air",
+    "submit": "ส่งคำขอทดสอบ",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ประเภทบริการทางเรือทางอากาศทางบกพิธีการศุลกากร",
+      "ชื่อผู้ติดต่อ (สมมติ)",
+      "อีเมลทดสอบ",
+      "โทรศัพท์ (สมมติ)",
+      "ต้นทาง",
+      "ปลายทาง",
+      "น้ำหนักรวม (กิโลกรัม)",
+      "รายละเอียดสินค้า",
+      "ยืนยันว่าใช้ข้อมูลสังเคราะห์สำหรับทดสอบระบบเท่านั้น",
+      "ทดสอบตัวเลือกความยินยอมการตลาด (ไม่บังคับ และไม่มีการติดต่อจริง)"
+    ],
+    "path": "/th/request-a-quote",
+    "service": "land",
+    "submit": "ส่งคำขอทดสอบ",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ประเภทบริการทางเรือทางอากาศทางบกพิธีการศุลกากร",
+      "ชื่อผู้ติดต่อ (สมมติ)",
+      "อีเมลทดสอบ",
+      "โทรศัพท์ (สมมติ)",
+      "ต้นทาง",
+      "ปลายทาง",
+      "ประเภทพิธีการนำเข้าส่งออก",
+      "รายละเอียดสินค้า",
+      "ยืนยันว่าใช้ข้อมูลสังเคราะห์สำหรับทดสอบระบบเท่านั้น",
+      "ทดสอบตัวเลือกความยินยอมการตลาด (ไม่บังคับ และไม่มีการติดต่อจริง)"
+    ],
+    "path": "/th/request-a-quote",
+    "service": "customs",
+    "submit": "ส่งคำขอทดสอบ",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ServiceSea freightAir freightLand freightCustoms clearance",
+      "Contact name (synthetic)",
+      "Test email",
+      "Phone (synthetic)",
+      "Origin",
+      "Destination",
+      "Sea freight modeFCL — Full container loadLCL — Less than container load",
+      "Cargo description",
+      "I confirm this is synthetic data for testing only.",
+      "Test marketing consent option (optional; no real contact)"
+    ],
+    "path": "/en/request-a-quote",
+    "service": "sea",
+    "submit": "Submit test request",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ServiceSea freightAir freightLand freightCustoms clearance",
+      "Contact name (synthetic)",
+      "Test email",
+      "Phone (synthetic)",
+      "Origin",
+      "Destination",
+      "Total weight (kg)",
+      "Cargo description",
+      "I confirm this is synthetic data for testing only.",
+      "Test marketing consent option (optional; no real contact)"
+    ],
+    "path": "/en/request-a-quote",
+    "service": "air",
+    "submit": "Submit test request",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ServiceSea freightAir freightLand freightCustoms clearance",
+      "Contact name (synthetic)",
+      "Test email",
+      "Phone (synthetic)",
+      "Origin",
+      "Destination",
+      "Total weight (kg)",
+      "Cargo description",
+      "I confirm this is synthetic data for testing only.",
+      "Test marketing consent option (optional; no real contact)"
+    ],
+    "path": "/en/request-a-quote",
+    "service": "land",
+    "submit": "Submit test request",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "ServiceSea freightAir freightLand freightCustoms clearance",
+      "Contact name (synthetic)",
+      "Test email",
+      "Phone (synthetic)",
+      "Origin",
+      "Destination",
+      "Customs directionImportExport",
+      "Cargo description",
+      "I confirm this is synthetic data for testing only.",
+      "Test marketing consent option (optional; no real contact)"
+    ],
+    "path": "/en/request-a-quote",
+    "service": "customs",
+    "submit": "Submit test request",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "服务类型海运空运陆运清关",
+      "联系人姓名（虚构）",
+      "测试邮箱",
+      "电话（虚构）",
+      "起运地",
+      "目的地",
+      "海运方式FCL — 整箱运输LCL — 拼箱运输",
+      "货物描述",
+      "我确认仅提交用于测试的虚构数据。",
+      "测试营销同意选项（可选；不会实际联系）"
+    ],
+    "path": "/zh/request-a-quote",
+    "service": "sea",
+    "submit": "提交测试询价",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "服务类型海运空运陆运清关",
+      "联系人姓名（虚构）",
+      "测试邮箱",
+      "电话（虚构）",
+      "起运地",
+      "目的地",
+      "总重量（公斤）",
+      "货物描述",
+      "我确认仅提交用于测试的虚构数据。",
+      "测试营销同意选项（可选；不会实际联系）"
+    ],
+    "path": "/zh/request-a-quote",
+    "service": "air",
+    "submit": "提交测试询价",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "服务类型海运空运陆运清关",
+      "联系人姓名（虚构）",
+      "测试邮箱",
+      "电话（虚构）",
+      "起运地",
+      "目的地",
+      "总重量（公斤）",
+      "货物描述",
+      "我确认仅提交用于测试的虚构数据。",
+      "测试营销同意选项（可选；不会实际联系）"
+    ],
+    "path": "/zh/request-a-quote",
+    "service": "land",
+    "submit": "提交测试询价",
+    "viewport": 390
+  },
+  {
+    "documentWidth": 375,
+    "labels": [
+      "服务类型海运空运陆运清关",
+      "联系人姓名（虚构）",
+      "测试邮箱",
+      "电话（虚构）",
+      "起运地",
+      "目的地",
+      "清关方向进口出口",
+      "货物描述",
+      "我确认仅提交用于测试的虚构数据。",
+      "测试营销同意选项（可选；不会实际联系）"
+    ],
+    "path": "/zh/request-a-quote",
+    "service": "customs",
+    "submit": "提交测试询价",
+    "viewport": 390
+  }
+]

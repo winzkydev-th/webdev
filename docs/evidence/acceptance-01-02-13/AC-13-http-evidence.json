@@ -1,0 +1,370 @@
+{
+  "environment": "ordinary local production build; no approved company domain or production connections",
+  "checkedAt": "2026-11-10T10:26:57.835Z",
+  "pages": [
+    {
+      "path": "/th",
+      "status": 200,
+      "title": "หน้าแรก | KPN WAGON LOGISTICS",
+      "description": "หน้าแรก — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/about",
+      "status": 200,
+      "title": "เกี่ยวกับเรา | KPN WAGON LOGISTICS",
+      "description": "เกี่ยวกับเรา — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/services",
+      "status": 200,
+      "title": "บริการ | KPN WAGON LOGISTICS",
+      "description": "บริการ — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/sea-freight",
+      "status": 200,
+      "title": "ขนส่งทางเรือ | KPN WAGON LOGISTICS",
+      "description": "ขนส่งทางเรือ — วางแผนการขนส่งสินค้าทางทะเล",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/air-freight",
+      "status": 200,
+      "title": "ขนส่งทางอากาศ | KPN WAGON LOGISTICS",
+      "description": "ขนส่งทางอากาศ — ประสานงานการขนส่งสินค้าทางอากาศ",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/land-freight",
+      "status": 200,
+      "title": "ขนส่งทางบก | KPN WAGON LOGISTICS",
+      "description": "ขนส่งทางบก — ประสานงานการขนส่งสินค้าทางบก",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/customs-clearance",
+      "status": 200,
+      "title": "พิธีการศุลกากร | KPN WAGON LOGISTICS",
+      "description": "พิธีการศุลกากร — ประสานงานด้านพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/request-a-quote",
+      "status": 200,
+      "title": "ขอใบเสนอราคา | KPN WAGON LOGISTICS",
+      "description": "ขอใบเสนอราคา — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/news",
+      "status": 200,
+      "title": "ข่าวสาร | KPN WAGON LOGISTICS",
+      "description": "ข่าวสาร — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/contact",
+      "status": 200,
+      "title": "ติดต่อเรา | KPN WAGON LOGISTICS",
+      "description": "ติดต่อเรา — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/privacy",
+      "status": 200,
+      "title": "ความเป็นส่วนตัว | KPN WAGON LOGISTICS",
+      "description": "ความเป็นส่วนตัว — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/th/terms",
+      "status": 200,
+      "title": "ข้อกำหนด | KPN WAGON LOGISTICS",
+      "description": "ข้อกำหนด — บริการขนส่งทางเรือ ทางอากาศ ทางบก และพิธีการศุลกากร",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en",
+      "status": 200,
+      "title": "Home | KPN WAGON LOGISTICS",
+      "description": "Home — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/about",
+      "status": 200,
+      "title": "About | KPN WAGON LOGISTICS",
+      "description": "About — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/services",
+      "status": 200,
+      "title": "Services | KPN WAGON LOGISTICS",
+      "description": "Services — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/sea-freight",
+      "status": 200,
+      "title": "Sea Freight | KPN WAGON LOGISTICS",
+      "description": "Sea Freight — Coordinate your ocean cargo requirements",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/air-freight",
+      "status": 200,
+      "title": "Air Freight | KPN WAGON LOGISTICS",
+      "description": "Air Freight — Coordinate your air cargo requirements",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/land-freight",
+      "status": 200,
+      "title": "Land Freight | KPN WAGON LOGISTICS",
+      "description": "Land Freight — Coordinate your road freight requirements",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/customs-clearance",
+      "status": 200,
+      "title": "Customs Clearance | KPN WAGON LOGISTICS",
+      "description": "Customs Clearance — Coordinate customs clearance requirements",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/request-a-quote",
+      "status": 200,
+      "title": "Request a Quote | KPN WAGON LOGISTICS",
+      "description": "Request a Quote — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/news",
+      "status": 200,
+      "title": "News | KPN WAGON LOGISTICS",
+      "description": "News — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/contact",
+      "status": 200,
+      "title": "Contact | KPN WAGON LOGISTICS",
+      "description": "Contact — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/privacy",
+      "status": 200,
+      "title": "Privacy | KPN WAGON LOGISTICS",
+      "description": "Privacy — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/en/terms",
+      "status": 200,
+      "title": "Terms | KPN WAGON LOGISTICS",
+      "description": "Terms — Sea, air and land freight, with customs clearance coordination.",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh",
+      "status": 200,
+      "title": "首页 | KPN WAGON LOGISTICS",
+      "description": "首页 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/about",
+      "status": 200,
+      "title": "关于我们 | KPN WAGON LOGISTICS",
+      "description": "关于我们 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/services",
+      "status": 200,
+      "title": "服务 | KPN WAGON LOGISTICS",
+      "description": "服务 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/sea-freight",
+      "status": 200,
+      "title": "海运 | KPN WAGON LOGISTICS",
+      "description": "海运 — 协调海运货物需求",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/air-freight",
+      "status": 200,
+      "title": "空运 | KPN WAGON LOGISTICS",
+      "description": "空运 — 协调空运货物需求",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/land-freight",
+      "status": 200,
+      "title": "陆运 | KPN WAGON LOGISTICS",
+      "description": "陆运 — 协调陆运货物需求",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/customs-clearance",
+      "status": 200,
+      "title": "清关服务 | KPN WAGON LOGISTICS",
+      "description": "清关服务 — 协调清关需求",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/request-a-quote",
+      "status": 200,
+      "title": "询价 | KPN WAGON LOGISTICS",
+      "description": "询价 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/news",
+      "status": 200,
+      "title": "新闻 | KPN WAGON LOGISTICS",
+      "description": "新闻 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/contact",
+      "status": 200,
+      "title": "联系我们 | KPN WAGON LOGISTICS",
+      "description": "联系我们 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/privacy",
+      "status": 200,
+      "title": "隐私政策 | KPN WAGON LOGISTICS",
+      "description": "隐私政策 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    },
+    {
+      "path": "/zh/terms",
+      "status": 200,
+      "title": "使用条款 | KPN WAGON LOGISTICS",
+      "description": "使用条款 — 提供海运、空运、陆运及清关协调服务。",
+      "robots": "noindex, nofollow",
+      "header": "noindex, nofollow",
+      "canonical": null
+    }
+  ],
+  "negative": [
+    {
+      "path": "/th/acceptance-missing-page",
+      "status": 404
+    },
+    {
+      "path": "/en/acceptance-missing-page",
+      "status": 404
+    },
+    {
+      "path": "/zh/acceptance-missing-page",
+      "status": 404
+    },
+    {
+      "path": "/xx/about",
+      "status": 404
+    },
+    {
+      "path": "/staff/login",
+      "status": 200,
+      "header": "noindex, nofollow"
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "header": "noindex, nofollow"
+    }
+  ],
+  "robots": {
+    "status": 200,
+    "body": "User-Agent: *\nDisallow: /\n\n"
+  },
+  "sitemap": {
+    "status": 200,
+    "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n</urlset>\n"
+  },
+  "root": {
+    "status": 307,
+    "location": "/th"
+  }
+}

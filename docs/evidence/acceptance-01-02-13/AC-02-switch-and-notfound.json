@@ -1,0 +1,33 @@
+{
+  "switches": [
+    {
+      "expected": "/th/services",
+      "url": "http://127.0.0.1:3000/th/services"
+    },
+    {
+      "expected": "/en/services",
+      "url": "http://127.0.0.1:3000/en/services"
+    },
+    {
+      "expected": "/zh/services",
+      "url": "http://127.0.0.1:3000/zh/services"
+    }
+  ],
+  "notFound": [
+    {
+      "lang": "th",
+      "path": "/th/acceptance-missing-page",
+      "text": "404ไม่พบหน้าที่ต้องการโปรดตรวจสอบที่อยู่หน้าเว็บ หรือกลับไปหน้าแรกกลับหน้าแรก"
+    },
+    {
+      "lang": "en",
+      "path": "/en/acceptance-missing-page",
+      "text": "404Page not foundCheck the page address or return to the home page.Back to home"
+    },
+    {
+      "lang": "zh-Hans",
+      "path": "/zh/acceptance-missing-page",
+      "text": "404未找到页面请检查页面地址，或返回首页。返回首页"
+    }
+  ]
+}
