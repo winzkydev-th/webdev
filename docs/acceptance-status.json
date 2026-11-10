@@ -3,6 +3,7 @@
   "environment": "development with real PostgreSQL; synthetic OIDC/provider/scanner",
   "metric": "unweighted acceptance criteria with development evidence; not production readiness",
   "passedDevelopment": [
+    "AC-01",
     "AC-03",
     "AC-04",
     "AC-05",
@@ -14,7 +15,10 @@
     "AC-12"
   ],
   "totalCriteria": 14,
-  "percentage": 64.3,
+  "percentage": 71.4,
   "reportingMilestone": 60,
-  "productionReady": false
+  "productionReady": false,
+  "evidence": {
+    "AC-01": "docs/AC-01-REPORT.md"
+  }
 }
