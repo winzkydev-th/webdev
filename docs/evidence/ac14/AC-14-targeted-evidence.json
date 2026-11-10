@@ -1,0 +1,49 @@
+{
+  "scope": "new isolated PostgreSQL port 55450 and signed mock OIDC on loopback; no production or external targets",
+  "checks": [
+    {
+      "name": "SQL injection",
+      "literalStored": true,
+      "ownerLiteralMatches": 1,
+      "salesLiteralMatches": 0,
+      "invalidIdRejected": true
+    },
+    {
+      "name": "API/CSRF",
+      "crossSession": 403,
+      "crossSite": 403,
+      "prototypeActions": 400,
+      "oversizedBody": 413,
+      "forgedSession": "SIGN_IN_REQUIRED"
+    },
+    {
+      "name": "API authentication",
+      "families": 3,
+      "missingSession": 401,
+      "forgedSession": 401
+    },
+    {
+      "name": "Public intake",
+      "crossOrigin": 403,
+      "wrongContentType": 415,
+      "tooLarge": 413,
+      "malformedJSON": 400,
+      "massAssignment": 422,
+      "rateLimit": 429
+    },
+    {
+      "name": "Login rate limit",
+      "hits": 100,
+      "rejectedStatus": 429,
+      "additionalTransaction": false,
+      "scope": "global 15 minute bucket; provider discovery occurs before limiter (code review)"
+    },
+    {
+      "name": "PostgreSQL",
+      "auditDeleteDenied": true,
+      "auditUpdateDenied": true,
+      "publicSchemaCreateDenied": true
+    }
+  ],
+  "caseCount": 6
+}

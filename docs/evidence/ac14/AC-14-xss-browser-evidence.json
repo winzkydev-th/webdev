@@ -1,0 +1,18 @@
+[
+  {
+    "eventAttributes": [],
+    "images": 0,
+    "literalAttackVisible": true,
+    "path": "/quotation",
+    "scripts": 0,
+    "title": "AC14-SYNTHETIC-ONLY / R1"
+  },
+  {
+    "executableScripts": 0,
+    "images": 0,
+    "jsonLdName": "</script><script>document.title=\"AC14-XSS-EXECUTED\"</script><img src=x onerror=\"document.title=123\">",
+    "path": "/schema",
+    "scripts": 1,
+    "title": "AC14 JSON-LD test only"
+  }
+]

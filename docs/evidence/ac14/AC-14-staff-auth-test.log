@@ -1,0 +1,24 @@
+
+> kpn-wagon-web@0.1.0 test:staff-auth
+> node --test tests/staff-auth.integration.mjs
+
+▶ real OIDC code flow and database-backed staff sessions
+  ✔ valid code + PKCE + signed ID token creates an opaque session with database role (59.7339ms)
+  ✔ owner and manager cannot enter without required MFA assurance (26.7725ms)
+  ✔ unknown and disabled provider subjects never auto-provision accounts (21.9563ms)
+  ✔ invalid state, nonce, issuer, audience, expiration and old auth_time are rejected (109.8907ms)
+  ✔ tampered login cookie and replayed callback are rejected (10.2919ms)
+  ✔ session expires on idle, hard expiry, logout or role changes (42.3234ms)
+  ✔ same-session parallel requests serialize rather than deadlocking (466.3484ms)
+  ✔ mutations require exact origin and session-bound CSRF token (12.5543ms)
+  ✔ callback uses configured public origin when server origin is internal and rejects forged hosts (0.5428ms)
+  ✔ production disallows loopback HTTP and requires secure Host cookies (0.3279ms)
+✔ real OIDC code flow and database-backed staff sessions (9869.8268ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10366.5819

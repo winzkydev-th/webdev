@@ -1,0 +1,42 @@
+{
+  "method": "read-only verification of approved AC-11 artifacts; no new restore, key read or decryption",
+  "dumpCipherHashMatches": true,
+  "manifestCipherHashMatches": true,
+  "vaultAcl": {
+    "protected": true,
+    "rules": [
+      {
+        "identity": "NT AUTHORITY\\SYSTEM",
+        "rights": "FullControl",
+        "type": "Allow"
+      },
+      {
+        "identity": "DESKTOP-FSGNUIA\\Winzky",
+        "rights": "FullControl",
+        "type": "Allow"
+      }
+    ]
+  },
+  "keyDirectoryAcl": {
+    "protected": true,
+    "rules": [
+      {
+        "identity": "NT AUTHORITY\\SYSTEM",
+        "rights": "FullControl",
+        "type": "Allow"
+      },
+      {
+        "identity": "DESKTOP-FSGNUIA\\Winzky",
+        "rights": "FullControl",
+        "type": "Allow"
+      }
+    ]
+  },
+  "approvedScope": "APPROVED — LOCAL DEVELOPMENT DRILL ONLY",
+  "productionConditions": [
+    "automatic after reboot",
+    "24-hour continuous test",
+    "off-machine copy",
+    "independent encryption-key recovery"
+  ]
+}

@@ -1,0 +1,16 @@
+▶ AC-14 targeted local SQL API and login security
+  ✔ SQL metacharacters remain literal data and cannot broaden scoped SQL searches (21.9177ms)
+  ✔ cross-session CSRF, cross-site requests, prototype action names and oversized JSON fail closed (4.6351ms)
+  ✔ all staff API families reject a cookie copied from another application or a forged session (5.0654ms)
+  ✔ intake rejects cross-origin non-JSON oversized malformed and unknown-field payloads; limiter preserves request count (7.0108ms)
+  ✔ login rate ceiling rejects extra starts without creating another login transaction (4.2835ms)
+  ✔ restricted SQL runtime cannot mutate audit evidence or create/drop schema objects (211.8815ms)
+✔ AC-14 targeted local SQL API and login security (5753.7449ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6006.4913

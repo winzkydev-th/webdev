@@ -24,15 +24,37 @@
     "AC-01": "docs/AC-01-REPORT.md",
     "AC-02": "docs/AC-02-REPORT.md",
     "AC-13": "docs/AC-13-REPORT.md",
-    "AC-11": "docs/AC-11-REPORT.md"
+    "AC-11": "docs/AC-11-REPORT.md",
+    "AC-14": "docs/KPN-AC-14-Security-Report.md"
   },
   "pendingAcceptance": {
     "AC-13": "Pending approved company domain and actual-host SEO verification",
-    "AC-14": "Pending owner approval of AC-11 before security work; not started"
+    "AC-14": "Local security assessment completed: NOT PASSED; Medium M-01/M-02/M-03 and NOT TESTED production controls; awaiting owner review"
   },
   "ownerReviewRequired": {
     "criterion": "AC-11",
-    "beforeStarting": "AC-14",
-    "status": "awaiting-owner-approval"
+    "status": "APPROVED — LOCAL DEVELOPMENT DRILL ONLY",
+    "approvedOn": "2026-11-10",
+    "authority": "Owner explicit approval in project chat",
+    "reference": "KPN-AC-11-Review-b60a8ac.md",
+    "productionAcceptance": false,
+    "productionConditions": [
+      "Automatic Backup after Reboot",
+      "At least 24-hour continuous backup test",
+      "Off-machine backup copy",
+      "Independent encryption-key backup and recovery"
+    ]
+  },
+  "securityReview": {
+    "status": "NOT PASSED",
+    "productionSecurityReadiness": "NOT READY",
+    "confirmedFindings": {
+      "critical": 0,
+      "high": 0,
+      "medium": 3,
+      "low": 0
+    },
+    "warning": "No confirmed Critical/High in bounded local work is not a guarantee; current advisory and production controls not tested",
+    "ownerReviewRequired": true
   }
 }

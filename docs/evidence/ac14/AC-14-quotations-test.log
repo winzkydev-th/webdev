@@ -1,0 +1,26 @@
+
+> kpn-wagon-web@0.1.0 test:quotations
+> node --test tests/quotations.integration.mjs
+
+▶ real PostgreSQL immutable quotation and delivery workflow
+  ✔ twenty concurrent draft retries save one revision and exact decimal total (467.325ms)
+  ✔ draft document snapshot is private and download waits for approval (9.3941ms)
+  ✔ Sales cannot approve; self approval and stale MFA are denied (36.312ms)
+  ✔ independent approval binds the original document hash and permits private download (10.2926ms)
+  ✔ approved content, approval, documents and delivery rows are immutable in the database (193.49ms)
+  ✔ Quoted cannot be set by status alone and quarantined/wrong-request evidence is refused (118.7779ms)
+  ✔ missing or corrupt physical evidence never marks the request Quoted (14.277ms)
+  ✔ failure after evidence insert rolls back delivery, revision and status together (11.6704ms)
+  ✔ delivery is idempotent, binds scanned evidence and atomically records Quoted audit (30.303ms)
+  ✔ new revisions preserve older proof but old proof cannot satisfy the latest revision (108.2817ms)
+  ✔ live issuance stays closed without approved company template; stale draft versions fail (23.828ms)
+  ✔ quotation HTTP enforces session, CSRF, action allowlist and download authorization (10.3468ms)
+✔ real PostgreSQL immutable quotation and delivery workflow (7998.7955ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8327.4905
