@@ -1,0 +1,2 @@
+import {staffHandlers} from '../../../lib/staff-http';import {staffConfig} from '../../../lib/staff-auth';import {getStaffDatabase} from '../../../lib/staff-database';
+export const runtime='nodejs';export async function GET(request:Request){return staffHandlers(getStaffDatabase,staffConfig()).GET(request);}export async function POST(request:Request){return staffHandlers(getStaffDatabase,staffConfig()).POST(request);}

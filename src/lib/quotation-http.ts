@@ -1,0 +1,18 @@
+import type {Database} from './intake.ts';import {StaffError,validateStaffConfig,readStaffCookie,verifyStaffMutation} from './staff-auth.ts';import type {StaffConfig} from './staff-auth.ts';import type {PrivateFileStore} from './private-files.ts';
+import {quotationWorkspace,createQuotationDraft,approveQuotation,recordQuotationDelivery,quotationDocument,quotationEvidence} from './quotations.ts';import type {QuotationConfig} from './quotations.ts';
+const json=(body:unknown,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'private, no-store'}});
+const downloadHeaders=(filename:string)=>({'Cache-Control':'private, no-store','Content-Type':'application/octet-stream','Content-Disposition':"attachment; filename*=UTF-8''"+encodeURIComponent(filename),'X-Content-Type-Options':'nosniff','Content-Security-Policy':"sandbox; default-src 'none'"});
+export function quotationHandlers(database:()=>Database,staff:StaffConfig,config:QuotationConfig,store:()=>PrivateFileStore){async function run(request:Request,mutation:boolean){try{
+ const settings=validateStaffConfig(staff);const token=readStaffCookie(request,settings.sessionCookie);if(!token)throw new StaffError(401,'SIGN_IN_REQUIRED');
+ if(!mutation){const query=new URL(request.url).searchParams;switch(query.get('view')??'workspace'){
+ case 'workspace':return json(await quotationWorkspace(database(),token,query.get('requestId')??''));
+ case 'document':{const result=await quotationDocument(database(),token,query.get('revisionId')??'',true);return new Response(result.html,{headers:downloadHeaders(result.filename)});}
+ case 'evidence':{const result=await quotationEvidence(database(),token,query.get('deliveryId')??'',store());return new Response(new Uint8Array(result.bytes),{headers:downloadHeaders(result.filename)});}
+ default:throw new StaffError(400,'INVALID_VIEW');}}
+ verifyStaffMutation(request,token,staff);if(request.headers.get('content-type')?.split(';')[0].trim()!=='application/json')throw new StaffError(415,'JSON_REQUIRED');
+ if(!request.body)throw new StaffError(400,'INVALID_INPUT');const reader=request.body.getReader();const chunks:Uint8Array[]=[];let size=0;try{while(true){const part=await reader.read();if(part.done)break;size+=part.value.length;if(size>65536){await reader.cancel();throw new StaffError(413,'BODY_TOO_LARGE');}chunks.push(part.value);}}finally{reader.releaseLock();}
+ let body:Record<string,unknown>;try{body=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(Buffer.concat(chunks)));if(!body||typeof body!=='object'||Array.isArray(body))throw new Error();}catch{throw new StaffError(400,'INVALID_JSON');}
+ const actions:Record<string,string[]>={draft:['action','requestId','version','expectedRevision','draftKey','currency','language','validUntil','items','terms','taxNote','revisionReason'],approve:['action','requestId','version','revisionId'],delivery:['action','requestId','version','revisionId','deliveryKey','channel','recipient','sentAt','evidenceReference','evidenceAttachmentId']};const action=String(body.action);if(!Object.hasOwn(actions,action)||Object.keys(body).some(k=>!actions[action].includes(k)))throw new StaffError(400,'INVALID_INPUT');
+ switch(action){case 'draft':return json(await createQuotationDraft(database(),token,config,body),201);case 'approve':return json(await approveQuotation(database(),token,config,body));case 'delivery':return json(await recordQuotationDelivery(database(),token,config,store(),body));default:throw new StaffError(400,'INVALID_ACTION');}
+ }catch(e){if(e instanceof StaffError)return json({code:e.message},e.status);return json({code:'TEMPORARILY_UNAVAILABLE'},503);}}
+ return {GET:(request:Request)=>run(request,false),POST:(request:Request)=>run(request,true)};}

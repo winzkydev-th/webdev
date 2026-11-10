@@ -1,0 +1,2 @@
+import {testIntakeEnabled} from '../../../lib/intake-http';
+export function GET(){const enabled=testIntakeEnabled({mode:process.env.QUOTE_INTAKE_MODE,appEnv:process.env.APP_ENV,origin:process.env.APP_ORIGIN,privacyVersion:process.env.PRIVACY_NOTICE_VERSION,rateSecret:process.env.RATE_LIMIT_SECRET});return Response.json({status:'ok',kind:'liveness',stage:'intake',quoteIntake:enabled?'synthetic-test-only':'disabled'},{headers:{'Cache-Control':'no-store'}});}

@@ -1,0 +1,2 @@
+import {LocalPrivateFileStore} from './private-files';import {quotationConfig} from './quotations';import {StaffError} from './staff-auth';
+export function quotationEvidenceStore(){const config=quotationConfig();if(config.mode!=='test'||config.appEnv!=='development')throw new StaffError(503,'PRIVATE_EVIDENCE_STORAGE_NOT_READY');return new LocalPrivateFileStore(process.env.QUOTATION_EVIDENCE_ROOT??'.local/quotation-evidence');}

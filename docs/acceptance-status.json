@@ -1,0 +1,20 @@
+{
+  "asOf": "2026-11-10",
+  "environment": "development with real PostgreSQL; synthetic OIDC/provider/scanner",
+  "metric": "unweighted acceptance criteria with development evidence; not production readiness",
+  "passedDevelopment": [
+    "AC-03",
+    "AC-04",
+    "AC-05",
+    "AC-06",
+    "AC-07",
+    "AC-08",
+    "AC-09",
+    "AC-10",
+    "AC-12"
+  ],
+  "totalCriteria": 14,
+  "percentage": 64.3,
+  "reportingMilestone": 60,
+  "productionReady": false
+}
