@@ -31,7 +31,11 @@
     "test:content": "node --test tests/content.integration.mjs",
     "test:seo": "node --test tests/seo.acceptance.test.mjs",
     "test:seo-http": "node tests/seo-http.acceptance.mjs",
-    "test:language": "node --test tests/language.acceptance.test.mjs"
+    "test:language": "node --test tests/language.acceptance.test.mjs",
+    "backup:once": "node scripts/local-backup.mjs --once",
+    "backup:worker": "node scripts/local-backup.mjs --worker",
+    "backup:restore": "node scripts/local-backup.mjs --restore",
+    "test:backup": "node --test tests/backup.integration.mjs"
   },
   "dependencies": {
     "next": "16.4.6",

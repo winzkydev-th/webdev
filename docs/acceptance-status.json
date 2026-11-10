@@ -13,20 +13,26 @@
     "AC-08",
     "AC-09",
     "AC-10",
+    "AC-11",
     "AC-12"
   ],
   "totalCriteria": 14,
-  "percentage": 78.6,
-  "reportingMilestone": 60,
+  "percentage": 85.7,
+  "reportingMilestone": 80,
   "productionReady": false,
   "evidence": {
     "AC-01": "docs/AC-01-REPORT.md",
     "AC-02": "docs/AC-02-REPORT.md",
-    "AC-13": "docs/AC-13-REPORT.md"
+    "AC-13": "docs/AC-13-REPORT.md",
+    "AC-11": "docs/AC-11-REPORT.md"
   },
   "pendingAcceptance": {
-    "AC-11": "Pending actual backup/restore drill; unchanged this work",
     "AC-13": "Pending approved company domain and actual-host SEO verification",
-    "AC-14": "Pending full security acceptance; unchanged this work"
+    "AC-14": "Pending owner approval of AC-11 before security work; not started"
+  },
+  "ownerReviewRequired": {
+    "criterion": "AC-11",
+    "beforeStarting": "AC-14",
+    "status": "awaiting-owner-approval"
   }
 }

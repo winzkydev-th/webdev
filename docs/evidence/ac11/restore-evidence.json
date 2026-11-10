@@ -1,0 +1,721 @@
+{
+  "date": "2026-11-10T12:09:29.758Z",
+  "scope": "local development only; newly generated synthetic source, no existing database or real customer data accessed",
+  "checks": [
+    "real pg_dump; encrypted backup completed; no plaintext dump retained; DPAPI recovered key",
+    "real pg_restore in separate cluster; full table/schema/sequence fingerprint equals source; all five private objects match bytes/SHA256",
+    "second actual restore into another new database; relationships and restored guards verified",
+    "automatic worker completed two backups on real wall clock; another process obeyed persisted nextDue"
+  ],
+  "restores": [
+    {
+      "backupId": "233e09c5-e27e-450f-9be7-83d2fce6dd13",
+      "database": "kpn_restore_9dd75c0e56a64039b73f7052652af5fc",
+      "restoreClusterId": "7706513841538513424",
+      "work": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\restores\\restore-349abd0a-aa32-4dcb-aea8-1c4b6d97a320",
+      "objectRoot": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\restores\\restore-349abd0a-aa32-4dcb-aea8-1c4b6d97a320\\objects",
+      "tables": {
+        "attachment_upload_permits": {
+          "count": 1,
+          "sha256": "7584bf787f49fc0daa3ffd50f2925afc80b5f943b396f695115a649006158b2c"
+        },
+        "attachments": {
+          "count": 4,
+          "sha256": "71f41d5b15d65ad18d1494ebacb289124422f7ca11fc18eeffa4622ce4c455d6"
+        },
+        "audit_logs": {
+          "count": 5,
+          "sha256": "1009655c48da758519e6592eeb0f93def6b13aa1bc0f407adc713b0be8dae767"
+        },
+        "cms_events": {
+          "count": 3,
+          "sha256": "5b3c936ba0797bcfe8cf2b63e64e1e90fc3df179d40d3a8a8d7ae13876260e0d"
+        },
+        "cms_revisions": {
+          "count": 3,
+          "sha256": "3e0cff0f353d4ff8e955b56179710ef15055f78b4df6d9e88e8fe972e40e058e"
+        },
+        "contacts": {
+          "count": 4,
+          "sha256": "cffdce9c77cefc46882dfd9a6f3dde8ca908e5c34aff3a854721776d513deba7"
+        },
+        "customers": {
+          "count": 1,
+          "sha256": "20fe7abecbaafb4d2a2ac516a825313fb962ffed21a8813530f00833869f2e72"
+        },
+        "intake_rate_limits": {
+          "count": 5,
+          "sha256": "a520afd7a4af9f743a1c87dbdba79d03824d9dfac5d6327693c71c42233a58ff"
+        },
+        "media": {
+          "count": 1,
+          "sha256": "226b93d3f3dcb84d2c0e498a954986f3961b3644dc79172734fa29ca101b39ae"
+        },
+        "notification_attempts": {
+          "count": 1,
+          "sha256": "ed67e3cc3ce44af152bba0940e9c1051efd7186e489dc5d4024bc1bafcd187a9"
+        },
+        "notifications": {
+          "count": 8,
+          "sha256": "6baea38b449059888f2c6e451b5cd0b6ae8562783919165d7a1feadaa164350f"
+        },
+        "pages": {
+          "count": 12,
+          "sha256": "0d30684840c2d37c8f5bf8fd9d79a38a3314dc607b770dd0d7d7c7b8bc600fe2"
+        },
+        "quotation_deliveries": {
+          "count": 1,
+          "sha256": "c9471108fd0bd5755609071ddf810fad4240eaeff2cb866bd6228ca56f33c125"
+        },
+        "quotation_documents": {
+          "count": 1,
+          "sha256": "6bccc7654fabfba541e3da7ecb836722f80d93a9aea7c9b3f421fb22d506cdd2"
+        },
+        "quote_activities": {
+          "count": 1,
+          "sha256": "539adda6c9524a86ad976f1b70d35ab9982ccf8ec18fb285ecd2c399e667ec2c"
+        },
+        "quote_assignments": {
+          "count": 1,
+          "sha256": "2e853fac9526ab7a652c06d50ce1787b29843ab81e3bf569dff1e1fcfb3990ef"
+        },
+        "quote_cargo_details": {
+          "count": 4,
+          "sha256": "20e504e835ce2d4005ed4af67bcf64801b3b6f9787ca221018857503f59bb3f3"
+        },
+        "quote_offers": {
+          "count": 1,
+          "sha256": "217d9e658749029a80aaf3057a43bef87b2b65d67e8c86f26e57af6acd8ba9b4"
+        },
+        "quote_requests": {
+          "count": 4,
+          "sha256": "c2c22d572dc19596c5080624bb79b4cf6e299088c3a98db11120d40ecef0cce6"
+        },
+        "quote_revisions": {
+          "count": 1,
+          "sha256": "9175e0392e53de7992373aed59c063c7054dd48007b54c636d1d52f1c08d608f"
+        },
+        "quote_status_history": {
+          "count": 8,
+          "sha256": "2b1f316997bc6b31b7efdcfc21cfa6fd9ceeaa20fc931d4f6bea32b3a2523d9a"
+        },
+        "schema_migrations": {
+          "count": 8,
+          "sha256": "8e7211e415ea1b064ca538d6ecdb79123ca0994edef3e771edde101fe0c51ab4"
+        },
+        "staff_login_transactions": {
+          "count": 1,
+          "sha256": "8a881cc01bf0130706bf14c8068b836ac59ab696d1b7b5543fcc25e14415fb04"
+        },
+        "staff_sessions": {
+          "count": 1,
+          "sha256": "d905c396d2ea9c51f6a14868fc706ae32fba8a413944507c0aec7dc1b3d246d4"
+        },
+        "staff_users": {
+          "count": 5,
+          "sha256": "9ac427ed2f221b25623c2b71ffc3992c320a4681cad0fdc9dcde496dc03ebc54"
+        },
+        "system_settings": {
+          "count": 1,
+          "sha256": "78dfe80a80f91029b89f149c30dbb6f9714c35f4482a753b72cc13a0dfd045e1"
+        },
+        "translations": {
+          "count": 3,
+          "sha256": "54ea24655045e30fc6ecfa4807cbb4c8d3c1036ce1323ae8da6c62ee43ba745b"
+        }
+      },
+      "sequences": {
+        "quote_reference_seq": {
+          "last_value": "4",
+          "is_called": true
+        }
+      },
+      "schema": {
+        "columns": "04e5e06958b38e6d6e12cb76aaf52704ff272b22074e20dcaa3232ab4639e88f",
+        "constraints": "af60b79b62190c7e37576d85c2c7212ddf5b319b54d419879d9fe5ffa560837f",
+        "functions": "880ffde427de38883701a1dd738708052b3f8b71b2fa34e1efdd111e88f0bc67",
+        "triggers": "b87f2b0ea6d9b8d540c72397a3dd728a9c1edf796df1933f11c052d1cee84094",
+        "indexes": "8b31177660ba2c7bede9d32a77c3c5359afa34582992d9c9a1cd43e4742eb447",
+        "views": "d2b1af236b21178fa08a329484fd5ce96abcc91cb37021be83e124cbf3ed1303"
+      },
+      "objects": [
+        {
+          "alias": "private",
+          "key": "470d59dd-fbe3-43cf-bcde-41dec2a3b094",
+          "sha256": "5edbb12f301936937351beb71059fdf9e26c80f001fa23294196e98ec706d533",
+          "bytes": 45
+        },
+        {
+          "alias": "private",
+          "key": "49dd6931-c529-4dbb-8453-4ce9d7e12581",
+          "sha256": "5820652b96d61f93760f67d148dcaeed4426035c195fe911a0bf2b0642f0ce85",
+          "bytes": 45
+        },
+        {
+          "alias": "private",
+          "key": "9d4bb30b-017a-4fce-9709-2c262a41c820",
+          "sha256": "d5cf3ce870975aaf81974d3ef0c656bb267b9c143c12f061e6977b63d0509435",
+          "bytes": 45
+        },
+        {
+          "alias": "private",
+          "key": "9f8819f8-69fa-4473-ba61-94ba0b6f95d5",
+          "sha256": "138f48a14d413565d5e0522cf82b6e54a611d74d8eead0406e8beafe0b55b3be",
+          "bytes": 20
+        },
+        {
+          "alias": "private",
+          "key": "ba26028f-15c6-4288-896b-b21117dbd092",
+          "sha256": "ed2c422419e0f1389312a795d5200ce42511c0a9578e568d841e666a2ecf19db",
+          "bytes": 45
+        }
+      ],
+      "elapsedMs": 1222,
+      "verified": true
+    },
+    {
+      "backupId": "233e09c5-e27e-450f-9be7-83d2fce6dd13",
+      "database": "kpn_restore_e16e8ab90ce2454091c4e4025cfba52d",
+      "restoreClusterId": "7706513841538513424",
+      "work": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\restores\\restore-2904ea70-40b9-4464-962f-4a904e39fc77",
+      "objectRoot": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\restores\\restore-2904ea70-40b9-4464-962f-4a904e39fc77\\objects",
+      "tables": {
+        "attachment_upload_permits": {
+          "count": 1,
+          "sha256": "7584bf787f49fc0daa3ffd50f2925afc80b5f943b396f695115a649006158b2c"
+        },
+        "attachments": {
+          "count": 4,
+          "sha256": "71f41d5b15d65ad18d1494ebacb289124422f7ca11fc18eeffa4622ce4c455d6"
+        },
+        "audit_logs": {
+          "count": 5,
+          "sha256": "1009655c48da758519e6592eeb0f93def6b13aa1bc0f407adc713b0be8dae767"
+        },
+        "cms_events": {
+          "count": 3,
+          "sha256": "5b3c936ba0797bcfe8cf2b63e64e1e90fc3df179d40d3a8a8d7ae13876260e0d"
+        },
+        "cms_revisions": {
+          "count": 3,
+          "sha256": "3e0cff0f353d4ff8e955b56179710ef15055f78b4df6d9e88e8fe972e40e058e"
+        },
+        "contacts": {
+          "count": 4,
+          "sha256": "cffdce9c77cefc46882dfd9a6f3dde8ca908e5c34aff3a854721776d513deba7"
+        },
+        "customers": {
+          "count": 1,
+          "sha256": "20fe7abecbaafb4d2a2ac516a825313fb962ffed21a8813530f00833869f2e72"
+        },
+        "intake_rate_limits": {
+          "count": 5,
+          "sha256": "a520afd7a4af9f743a1c87dbdba79d03824d9dfac5d6327693c71c42233a58ff"
+        },
+        "media": {
+          "count": 1,
+          "sha256": "226b93d3f3dcb84d2c0e498a954986f3961b3644dc79172734fa29ca101b39ae"
+        },
+        "notification_attempts": {
+          "count": 1,
+          "sha256": "ed67e3cc3ce44af152bba0940e9c1051efd7186e489dc5d4024bc1bafcd187a9"
+        },
+        "notifications": {
+          "count": 8,
+          "sha256": "6baea38b449059888f2c6e451b5cd0b6ae8562783919165d7a1feadaa164350f"
+        },
+        "pages": {
+          "count": 12,
+          "sha256": "0d30684840c2d37c8f5bf8fd9d79a38a3314dc607b770dd0d7d7c7b8bc600fe2"
+        },
+        "quotation_deliveries": {
+          "count": 1,
+          "sha256": "c9471108fd0bd5755609071ddf810fad4240eaeff2cb866bd6228ca56f33c125"
+        },
+        "quotation_documents": {
+          "count": 1,
+          "sha256": "6bccc7654fabfba541e3da7ecb836722f80d93a9aea7c9b3f421fb22d506cdd2"
+        },
+        "quote_activities": {
+          "count": 1,
+          "sha256": "539adda6c9524a86ad976f1b70d35ab9982ccf8ec18fb285ecd2c399e667ec2c"
+        },
+        "quote_assignments": {
+          "count": 1,
+          "sha256": "2e853fac9526ab7a652c06d50ce1787b29843ab81e3bf569dff1e1fcfb3990ef"
+        },
+        "quote_cargo_details": {
+          "count": 4,
+          "sha256": "20e504e835ce2d4005ed4af67bcf64801b3b6f9787ca221018857503f59bb3f3"
+        },
+        "quote_offers": {
+          "count": 1,
+          "sha256": "217d9e658749029a80aaf3057a43bef87b2b65d67e8c86f26e57af6acd8ba9b4"
+        },
+        "quote_requests": {
+          "count": 4,
+          "sha256": "c2c22d572dc19596c5080624bb79b4cf6e299088c3a98db11120d40ecef0cce6"
+        },
+        "quote_revisions": {
+          "count": 1,
+          "sha256": "9175e0392e53de7992373aed59c063c7054dd48007b54c636d1d52f1c08d608f"
+        },
+        "quote_status_history": {
+          "count": 8,
+          "sha256": "2b1f316997bc6b31b7efdcfc21cfa6fd9ceeaa20fc931d4f6bea32b3a2523d9a"
+        },
+        "schema_migrations": {
+          "count": 8,
+          "sha256": "8e7211e415ea1b064ca538d6ecdb79123ca0994edef3e771edde101fe0c51ab4"
+        },
+        "staff_login_transactions": {
+          "count": 1,
+          "sha256": "8a881cc01bf0130706bf14c8068b836ac59ab696d1b7b5543fcc25e14415fb04"
+        },
+        "staff_sessions": {
+          "count": 1,
+          "sha256": "d905c396d2ea9c51f6a14868fc706ae32fba8a413944507c0aec7dc1b3d246d4"
+        },
+        "staff_users": {
+          "count": 5,
+          "sha256": "9ac427ed2f221b25623c2b71ffc3992c320a4681cad0fdc9dcde496dc03ebc54"
+        },
+        "system_settings": {
+          "count": 1,
+          "sha256": "78dfe80a80f91029b89f149c30dbb6f9714c35f4482a753b72cc13a0dfd045e1"
+        },
+        "translations": {
+          "count": 3,
+          "sha256": "54ea24655045e30fc6ecfa4807cbb4c8d3c1036ce1323ae8da6c62ee43ba745b"
+        }
+      },
+      "sequences": {
+        "quote_reference_seq": {
+          "last_value": "4",
+          "is_called": true
+        }
+      },
+      "schema": {
+        "columns": "04e5e06958b38e6d6e12cb76aaf52704ff272b22074e20dcaa3232ab4639e88f",
+        "constraints": "af60b79b62190c7e37576d85c2c7212ddf5b319b54d419879d9fe5ffa560837f",
+        "functions": "880ffde427de38883701a1dd738708052b3f8b71b2fa34e1efdd111e88f0bc67",
+        "triggers": "b87f2b0ea6d9b8d540c72397a3dd728a9c1edf796df1933f11c052d1cee84094",
+        "indexes": "8b31177660ba2c7bede9d32a77c3c5359afa34582992d9c9a1cd43e4742eb447",
+        "views": "d2b1af236b21178fa08a329484fd5ce96abcc91cb37021be83e124cbf3ed1303"
+      },
+      "objects": [
+        {
+          "alias": "private",
+          "key": "470d59dd-fbe3-43cf-bcde-41dec2a3b094",
+          "sha256": "5edbb12f301936937351beb71059fdf9e26c80f001fa23294196e98ec706d533",
+          "bytes": 45
+        },
+        {
+          "alias": "private",
+          "key": "49dd6931-c529-4dbb-8453-4ce9d7e12581",
+          "sha256": "5820652b96d61f93760f67d148dcaeed4426035c195fe911a0bf2b0642f0ce85",
+          "bytes": 45
+        },
+        {
+          "alias": "private",
+          "key": "9d4bb30b-017a-4fce-9709-2c262a41c820",
+          "sha256": "d5cf3ce870975aaf81974d3ef0c656bb267b9c143c12f061e6977b63d0509435",
+          "bytes": 45
+        },
+        {
+          "alias": "private",
+          "key": "9f8819f8-69fa-4473-ba61-94ba0b6f95d5",
+          "sha256": "138f48a14d413565d5e0522cf82b6e54a611d74d8eead0406e8beafe0b55b3be",
+          "bytes": 20
+        },
+        {
+          "alias": "private",
+          "key": "ba26028f-15c6-4288-896b-b21117dbd092",
+          "sha256": "ed2c422419e0f1389312a795d5200ce42511c0a9578e568d841e666a2ecf19db",
+          "bytes": 45
+        }
+      ],
+      "elapsedMs": 1089,
+      "verified": true
+    }
+  ],
+  "sourceBefore": {
+    "tables": {
+      "attachment_upload_permits": {
+        "count": 1,
+        "sha256": "7584bf787f49fc0daa3ffd50f2925afc80b5f943b396f695115a649006158b2c"
+      },
+      "attachments": {
+        "count": 4,
+        "sha256": "71f41d5b15d65ad18d1494ebacb289124422f7ca11fc18eeffa4622ce4c455d6"
+      },
+      "audit_logs": {
+        "count": 5,
+        "sha256": "1009655c48da758519e6592eeb0f93def6b13aa1bc0f407adc713b0be8dae767"
+      },
+      "cms_events": {
+        "count": 3,
+        "sha256": "5b3c936ba0797bcfe8cf2b63e64e1e90fc3df179d40d3a8a8d7ae13876260e0d"
+      },
+      "cms_revisions": {
+        "count": 3,
+        "sha256": "3e0cff0f353d4ff8e955b56179710ef15055f78b4df6d9e88e8fe972e40e058e"
+      },
+      "contacts": {
+        "count": 4,
+        "sha256": "cffdce9c77cefc46882dfd9a6f3dde8ca908e5c34aff3a854721776d513deba7"
+      },
+      "customers": {
+        "count": 1,
+        "sha256": "20fe7abecbaafb4d2a2ac516a825313fb962ffed21a8813530f00833869f2e72"
+      },
+      "intake_rate_limits": {
+        "count": 5,
+        "sha256": "a520afd7a4af9f743a1c87dbdba79d03824d9dfac5d6327693c71c42233a58ff"
+      },
+      "media": {
+        "count": 1,
+        "sha256": "226b93d3f3dcb84d2c0e498a954986f3961b3644dc79172734fa29ca101b39ae"
+      },
+      "notification_attempts": {
+        "count": 1,
+        "sha256": "ed67e3cc3ce44af152bba0940e9c1051efd7186e489dc5d4024bc1bafcd187a9"
+      },
+      "notifications": {
+        "count": 8,
+        "sha256": "6baea38b449059888f2c6e451b5cd0b6ae8562783919165d7a1feadaa164350f"
+      },
+      "pages": {
+        "count": 12,
+        "sha256": "0d30684840c2d37c8f5bf8fd9d79a38a3314dc607b770dd0d7d7c7b8bc600fe2"
+      },
+      "quotation_deliveries": {
+        "count": 1,
+        "sha256": "c9471108fd0bd5755609071ddf810fad4240eaeff2cb866bd6228ca56f33c125"
+      },
+      "quotation_documents": {
+        "count": 1,
+        "sha256": "6bccc7654fabfba541e3da7ecb836722f80d93a9aea7c9b3f421fb22d506cdd2"
+      },
+      "quote_activities": {
+        "count": 1,
+        "sha256": "539adda6c9524a86ad976f1b70d35ab9982ccf8ec18fb285ecd2c399e667ec2c"
+      },
+      "quote_assignments": {
+        "count": 1,
+        "sha256": "2e853fac9526ab7a652c06d50ce1787b29843ab81e3bf569dff1e1fcfb3990ef"
+      },
+      "quote_cargo_details": {
+        "count": 4,
+        "sha256": "20e504e835ce2d4005ed4af67bcf64801b3b6f9787ca221018857503f59bb3f3"
+      },
+      "quote_offers": {
+        "count": 1,
+        "sha256": "217d9e658749029a80aaf3057a43bef87b2b65d67e8c86f26e57af6acd8ba9b4"
+      },
+      "quote_requests": {
+        "count": 4,
+        "sha256": "c2c22d572dc19596c5080624bb79b4cf6e299088c3a98db11120d40ecef0cce6"
+      },
+      "quote_revisions": {
+        "count": 1,
+        "sha256": "9175e0392e53de7992373aed59c063c7054dd48007b54c636d1d52f1c08d608f"
+      },
+      "quote_status_history": {
+        "count": 8,
+        "sha256": "2b1f316997bc6b31b7efdcfc21cfa6fd9ceeaa20fc931d4f6bea32b3a2523d9a"
+      },
+      "schema_migrations": {
+        "count": 8,
+        "sha256": "8e7211e415ea1b064ca538d6ecdb79123ca0994edef3e771edde101fe0c51ab4"
+      },
+      "staff_login_transactions": {
+        "count": 1,
+        "sha256": "8a881cc01bf0130706bf14c8068b836ac59ab696d1b7b5543fcc25e14415fb04"
+      },
+      "staff_sessions": {
+        "count": 1,
+        "sha256": "d905c396d2ea9c51f6a14868fc706ae32fba8a413944507c0aec7dc1b3d246d4"
+      },
+      "staff_users": {
+        "count": 5,
+        "sha256": "9ac427ed2f221b25623c2b71ffc3992c320a4681cad0fdc9dcde496dc03ebc54"
+      },
+      "system_settings": {
+        "count": 1,
+        "sha256": "78dfe80a80f91029b89f149c30dbb6f9714c35f4482a753b72cc13a0dfd045e1"
+      },
+      "translations": {
+        "count": 3,
+        "sha256": "54ea24655045e30fc6ecfa4807cbb4c8d3c1036ce1323ae8da6c62ee43ba745b"
+      }
+    },
+    "sequences": {
+      "quote_reference_seq": {
+        "last_value": "4",
+        "is_called": true
+      }
+    },
+    "schema": {
+      "columns": "04e5e06958b38e6d6e12cb76aaf52704ff272b22074e20dcaa3232ab4639e88f",
+      "constraints": "af60b79b62190c7e37576d85c2c7212ddf5b319b54d419879d9fe5ffa560837f",
+      "functions": "880ffde427de38883701a1dd738708052b3f8b71b2fa34e1efdd111e88f0bc67",
+      "triggers": "b87f2b0ea6d9b8d540c72397a3dd728a9c1edf796df1933f11c052d1cee84094",
+      "indexes": "8b31177660ba2c7bede9d32a77c3c5359afa34582992d9c9a1cd43e4742eb447",
+      "views": "d2b1af236b21178fa08a329484fd5ce96abcc91cb37021be83e124cbf3ed1303"
+    }
+  },
+  "source": {
+    "database": "kpn_local_test_edd6b22272334db6a6c04de684742e99",
+    "port": 55448,
+    "clusterDir": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\source-cluster"
+  },
+  "target": {
+    "port": 55449,
+    "clusterDir": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\target-cluster"
+  },
+  "paths": {
+    "run": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4",
+    "vault": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\vault",
+    "restoreBase": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\restores"
+  },
+  "acl": {
+    "vault": {
+      "protected": true,
+      "rules": [
+        {
+          "identity": "NT AUTHORITY\\SYSTEM",
+          "rights": "FullControl",
+          "type": "Allow"
+        },
+        {
+          "identity": "DESKTOP-FSGNUIA\\Winzky",
+          "rights": "FullControl",
+          "type": "Allow"
+        }
+      ]
+    },
+    "keys": {
+      "protected": true,
+      "rules": [
+        {
+          "identity": "NT AUTHORITY\\SYSTEM",
+          "rights": "FullControl",
+          "type": "Allow"
+        },
+        {
+          "identity": "DESKTOP-FSGNUIA\\Winzky",
+          "rights": "FullControl",
+          "type": "Allow"
+        }
+      ]
+    }
+  },
+  "backup": {
+    "dir": "E:\\KPN WAGON LOGISTICS COMPANY LIMITED\\web\\.local\\ac11-pn8nt4\\private\\vault\\backup-233e09c5-e27e-450f-9be7-83d2fce6dd13",
+    "id": "233e09c5-e27e-450f-9be7-83d2fce6dd13",
+    "completedAt": "2026-11-10T12:09:46.076Z",
+    "elapsedMs": 740,
+    "encrypted": true,
+    "manifestSha": "ffb88813cda27a86b2d52feedc24f262cc8e5e020390b0ffdfa746c1b21cc8ee",
+    "tableCount": 27,
+    "rowCount": 89,
+    "objectCount": 5
+  },
+  "encryptedDumpSha256": "b03c5576eb0b7a4387a5162b9782fbb48b3b4a3e2eb8ff66f26cb2b9307fc5a7",
+  "relationships": {
+    "latestQuotationDelivered": true,
+    "publishedLocales": 3,
+    "unvalidatedConstraints": 0,
+    "nextReferenceSequence": "5",
+    "appendOnlyGuards": true
+  },
+  "negative": {
+    "wrongKeyRejected": true,
+    "corruptionRejected": true,
+    "sameClusterRejected": true,
+    "unallowlistedDatabaseRejected": true,
+    "targetDatabaseCountUnchanged": true
+  },
+  "automatic": {
+    "intervalSecondsTested": 2,
+    "operationalDefaultIntervalSeconds": 86400,
+    "states": [
+      {
+        "at": "2026-11-10T12:09:52.177Z",
+        "due": true,
+        "nextDue": 1794312594176,
+        "lastSuccess": "2026-11-10T12:09:52.173Z",
+        "lastBackupId": "abb6d853-69bd-467c-ad9c-36de3cd27397",
+        "successes": 1,
+        "failures": 0
+      },
+      {
+        "at": "2026-11-10T12:09:55.028Z",
+        "due": true,
+        "nextDue": 1794312597026,
+        "lastSuccess": "2026-11-10T12:09:55.024Z",
+        "lastBackupId": "19d255ff-f345-4e72-b337-78ac716b422c",
+        "successes": 2,
+        "failures": 0
+      }
+    ],
+    "nextTick": {
+      "due": false,
+      "nextDue": 1794312597026,
+      "lastSuccess": "2026-11-10T12:09:55.024Z",
+      "lastBackupId": "19d255ff-f345-4e72-b337-78ac716b422c",
+      "successes": 2,
+      "failures": 0
+    },
+    "persistentWindowsTaskInstalled": false
+  },
+  "automaticRetry": {
+    "first": {
+      "due": true,
+      "nextDue": 1794312596908,
+      "successes": 0,
+      "failures": 1,
+      "lastFailure": "2026-11-10T12:09:55.908Z",
+      "lastError": "BACKUP_FAILED"
+    },
+    "second": {
+      "due": true,
+      "nextDue": 1794312599814,
+      "lastSuccess": "2026-11-10T12:09:57.812Z",
+      "lastBackupId": "fc45ab4a-dd83-448c-bebe-8735f3a1a886",
+      "successes": 1,
+      "failures": 1
+    }
+  },
+  "sourceAfter": {
+    "tables": {
+      "attachment_upload_permits": {
+        "count": 1,
+        "sha256": "7584bf787f49fc0daa3ffd50f2925afc80b5f943b396f695115a649006158b2c"
+      },
+      "attachments": {
+        "count": 4,
+        "sha256": "71f41d5b15d65ad18d1494ebacb289124422f7ca11fc18eeffa4622ce4c455d6"
+      },
+      "audit_logs": {
+        "count": 5,
+        "sha256": "1009655c48da758519e6592eeb0f93def6b13aa1bc0f407adc713b0be8dae767"
+      },
+      "cms_events": {
+        "count": 3,
+        "sha256": "5b3c936ba0797bcfe8cf2b63e64e1e90fc3df179d40d3a8a8d7ae13876260e0d"
+      },
+      "cms_revisions": {
+        "count": 3,
+        "sha256": "3e0cff0f353d4ff8e955b56179710ef15055f78b4df6d9e88e8fe972e40e058e"
+      },
+      "contacts": {
+        "count": 4,
+        "sha256": "cffdce9c77cefc46882dfd9a6f3dde8ca908e5c34aff3a854721776d513deba7"
+      },
+      "customers": {
+        "count": 1,
+        "sha256": "20fe7abecbaafb4d2a2ac516a825313fb962ffed21a8813530f00833869f2e72"
+      },
+      "intake_rate_limits": {
+        "count": 5,
+        "sha256": "a520afd7a4af9f743a1c87dbdba79d03824d9dfac5d6327693c71c42233a58ff"
+      },
+      "media": {
+        "count": 1,
+        "sha256": "226b93d3f3dcb84d2c0e498a954986f3961b3644dc79172734fa29ca101b39ae"
+      },
+      "notification_attempts": {
+        "count": 1,
+        "sha256": "ed67e3cc3ce44af152bba0940e9c1051efd7186e489dc5d4024bc1bafcd187a9"
+      },
+      "notifications": {
+        "count": 8,
+        "sha256": "6baea38b449059888f2c6e451b5cd0b6ae8562783919165d7a1feadaa164350f"
+      },
+      "pages": {
+        "count": 12,
+        "sha256": "0d30684840c2d37c8f5bf8fd9d79a38a3314dc607b770dd0d7d7c7b8bc600fe2"
+      },
+      "quotation_deliveries": {
+        "count": 1,
+        "sha256": "c9471108fd0bd5755609071ddf810fad4240eaeff2cb866bd6228ca56f33c125"
+      },
+      "quotation_documents": {
+        "count": 1,
+        "sha256": "6bccc7654fabfba541e3da7ecb836722f80d93a9aea7c9b3f421fb22d506cdd2"
+      },
+      "quote_activities": {
+        "count": 1,
+        "sha256": "539adda6c9524a86ad976f1b70d35ab9982ccf8ec18fb285ecd2c399e667ec2c"
+      },
+      "quote_assignments": {
+        "count": 1,
+        "sha256": "2e853fac9526ab7a652c06d50ce1787b29843ab81e3bf569dff1e1fcfb3990ef"
+      },
+      "quote_cargo_details": {
+        "count": 4,
+        "sha256": "20e504e835ce2d4005ed4af67bcf64801b3b6f9787ca221018857503f59bb3f3"
+      },
+      "quote_offers": {
+        "count": 1,
+        "sha256": "217d9e658749029a80aaf3057a43bef87b2b65d67e8c86f26e57af6acd8ba9b4"
+      },
+      "quote_requests": {
+        "count": 4,
+        "sha256": "c2c22d572dc19596c5080624bb79b4cf6e299088c3a98db11120d40ecef0cce6"
+      },
+      "quote_revisions": {
+        "count": 1,
+        "sha256": "9175e0392e53de7992373aed59c063c7054dd48007b54c636d1d52f1c08d608f"
+      },
+      "quote_status_history": {
+        "count": 8,
+        "sha256": "2b1f316997bc6b31b7efdcfc21cfa6fd9ceeaa20fc931d4f6bea32b3a2523d9a"
+      },
+      "schema_migrations": {
+        "count": 8,
+        "sha256": "8e7211e415ea1b064ca538d6ecdb79123ca0994edef3e771edde101fe0c51ab4"
+      },
+      "staff_login_transactions": {
+        "count": 1,
+        "sha256": "8a881cc01bf0130706bf14c8068b836ac59ab696d1b7b5543fcc25e14415fb04"
+      },
+      "staff_sessions": {
+        "count": 1,
+        "sha256": "d905c396d2ea9c51f6a14868fc706ae32fba8a413944507c0aec7dc1b3d246d4"
+      },
+      "staff_users": {
+        "count": 5,
+        "sha256": "9ac427ed2f221b25623c2b71ffc3992c320a4681cad0fdc9dcde496dc03ebc54"
+      },
+      "system_settings": {
+        "count": 1,
+        "sha256": "78dfe80a80f91029b89f149c30dbb6f9714c35f4482a753b72cc13a0dfd045e1"
+      },
+      "translations": {
+        "count": 3,
+        "sha256": "54ea24655045e30fc6ecfa4807cbb4c8d3c1036ce1323ae8da6c62ee43ba745b"
+      }
+    },
+    "sequences": {
+      "quote_reference_seq": {
+        "last_value": "4",
+        "is_called": true
+      }
+    },
+    "schema": {
+      "columns": "04e5e06958b38e6d6e12cb76aaf52704ff272b22074e20dcaa3232ab4639e88f",
+      "constraints": "af60b79b62190c7e37576d85c2c7212ddf5b319b54d419879d9fe5ffa560837f",
+      "functions": "880ffde427de38883701a1dd738708052b3f8b71b2fa34e1efdd111e88f0bc67",
+      "triggers": "b87f2b0ea6d9b8d540c72397a3dd728a9c1edf796df1933f11c052d1cee84094",
+      "indexes": "8b31177660ba2c7bede9d32a77c3c5359afa34582992d9c9a1cd43e4742eb447",
+      "views": "d2b1af236b21178fa08a329484fd5ce96abcc91cb37021be83e124cbf3ed1303"
+    }
+  },
+  "sourceUnchanged": true,
+  "completedAt": "2026-11-10T12:09:57.940Z",
+  "result": "passed-local-drill",
+  "clustersStopped": true
+}

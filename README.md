@@ -84,7 +84,7 @@ CMS_MODE defaults to disabled. test requires APP_ENV=development. live requires 
 
 Editor/Owner save new immutable drafts and submit review. Owner/Manager with recent MFA publish independently; self-publication is denied. Each locale is independent. Edits keep the old published pointer until the new review is approved. Unpublish is explicit and audited. Fixed pages, including News, are editable; individual article management/media library remain outside this implemented CMS slice.
 
-Default public pages remain noindex during development. Company content, identity, malware engine, cloud storage, backups, monitoring, production grants and deployment still require acceptance. Current unweighted development criteria: 11/14 (78.6%); not production ready.
+Default public pages remain noindex during development. Company content, identity, malware engine, cloud storage, backups, monitoring, production grants and deployment still require acceptance. Current unweighted development criteria: 12/14 (85.7%); not production ready.
 
 ## Acceptance 01 / 02 / 13 continuation
 
@@ -93,3 +93,11 @@ AC-01 and AC-02 passed development public-interface acceptance; see docs/AC-01-R
 AC-13 remains Pending: no approved company domain. test:seo and test:language exercise only new acceptance logic; test:seo-http checks the ordinary localhost production build with indexing disabled. It makes HTTP requests only to 127.0.0.1:3000. Optional first argument is an evidence JSON path. It never enables a domain or inserts test data.
 
 Before enabling SEO, follow docs/AC-13-REPORT.md. No default production domain. PUBLIC_SITE_URL must exactly match approved system_settings.company value.domain as an HTTPS origin. Domain/SEO/company flags plus live CMS and non-test publication are required. Headers are compiled at build time: rebuild with approved configuration, then verify actual-host directives before launch. Staff/API noindex stays permanent. AC-11/AC-14 remain unaccepted.
+
+## AC-11 actual local backup/restore drill
+
+See docs/AC-11-REPORT.md, docs/AC-11-VERIFICATION.md and docs/LOCAL-BACKUP-RESTORE-RUNBOOK.md. npm run test:backup creates two new isolated PostgreSQL clusters (55448/55449), seeds only synthetic data, performs real encrypted pg_dump and two pg_restore operations, compares all tables/schema/sequences/private files and stops its clusters. It does not read older test clusters or real customer data.
+
+Portable PostgreSQL 18.6 dump/restore tools are required in .local/tools/postgresql-18.6 (ignored). Backup commands are local-test/local-staging only with explicit paths and maintenance confirmation; no production fallback. Worker default: every 24 hours while running, retry after 60 seconds. Two accelerated real-clock automatic cycles and retry were tested. No Windows scheduled task, reboot startup, offsite backup or recovery-key escrow was configured. Do not treat this as Production backup certification. Follow the runbook before any local staging use.
+
+Development acceptance is now 12/14 (85.7%), milestone 80%. AC-11 awaits owner review before AC-14 starts. AC-13 remains Pending actual approved domain; AC-14 was not started. No 14/14 or Production readiness claim.
