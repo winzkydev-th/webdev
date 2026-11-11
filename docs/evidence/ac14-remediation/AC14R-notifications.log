@@ -1,0 +1,23 @@
+
+> kpn-wagon-web@0.1.0 test:notifications
+> node --test tests/notifications.integration.mjs
+
+▶ real PostgreSQL notification recovery
+  ✔ new request creates independent staff and customer notification jobs (22.1378ms)
+  ✔ parallel workers claim each job only once (1177.9845ms)
+  ✔ provider failure retains request, delays retry, then recovers with frozen message and key (24.6442ms)
+  ✔ expired lease is reclaimed and old worker cannot overwrite the new result (13.4226ms)
+  ✔ a timed-out provider releases work for retry without losing requests (31.4141ms)
+  ✔ permanent errors and exhausted attempts enter durable dead-letter state (11.726ms)
+  ✔ jobs older than provider dedupe window are held for reconciliation instead of resent (5.1205ms)
+  ✔ provider acceptance followed by lost response retries without a second physical delivery (13.3065ms)
+  ✔ worker has no ability to delete customer requests or audit history (3.6031ms)
+✔ real PostgreSQL notification recovery (14219.8002ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14585.0353

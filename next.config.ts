@@ -8,7 +8,6 @@ const config: NextConfig = {
     {key:'Referrer-Policy',value:'strict-origin-when-cross-origin'},
     {key:'Permissions-Policy',value:'camera=(), microphone=(), geolocation=()'},
     ...(!seoEnvironment().enabled?[{key:'X-Robots-Tag',value:'noindex, nofollow'}]:[]),
-    {key:'Content-Security-Policy',value:"frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"}
-  ]},{source:'/staff/:path*',headers:[{key:'X-Robots-Tag',value:'noindex, nofollow'}]},{source:'/api/:path*',headers:[{key:'X-Robots-Tag',value:'noindex, nofollow'}]}]; }
+  ]},{source:'/staff/:path*',headers:[{key:'X-Robots-Tag',value:'noindex, nofollow'}]},{source:'/api/:path*',headers:[{key:'X-Robots-Tag',value:'noindex, nofollow'},{key:'Content-Security-Policy',value:"default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"}]}]; }
 };
 export default config;

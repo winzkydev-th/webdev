@@ -13,6 +13,7 @@ test('staff workspace authorization and audited workflow on real PostgreSQL',{ti
  await owner.query('GRANT SELECT,UPDATE ON quote_requests TO workspace_runtime');
  await owner.query('GRANT INSERT ON quote_status_history,quote_assignments,quote_activities,audit_logs TO workspace_runtime');
  db=new Pool({host:'127.0.0.1',port,user:'workspace_runtime',password:runtimePassword,database:'postgres',max:10});
+await owner.query('GRANT SELECT,INSERT,UPDATE ON security_rate_buckets,security_event_windows TO workspace_runtime');await owner.query('GRANT SELECT,INSERT ON security_events,security_alerts,security_alert_acknowledgements TO workspace_runtime');
  const tokens={};for(const role of ['owner','manager','sales','editor','viewer','other']){const start=await startStaffLogin(db,config);tokens[role]=await completeStaffLogin(db,config,idp.issue(start.url,'synthetic-'+role),start.cookie);}
  const base={service:'sea',container:'LCL',locale:'th',name:'Synthetic',email:'workspace@example.invalid',phone:'000',origin:'A',destination:'B',cargo:'Synthetic cargo',privacyAcknowledged:true,marketingConsent:false};const opt={privacyVersion:'test',rateSecret:randomBytes(32).toString('hex'),contactLimit:1000,globalLimit:1000};const requests=[];
  for(const service of ['sea','air','land']){const result=await submitQuote(owner,{...base,service,weightKg:20},randomUUID(),opt);requests.push((await owner.query('SELECT id,version FROM quote_requests WHERE reference=$1',[result.reference])).rows[0]);}

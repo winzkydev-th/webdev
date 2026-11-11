@@ -1,3 +1,4 @@
+import {safeSecurityEvent,deniedKind} from './security-events.ts';
 import type {Database} from './intake.ts';import {StaffError,validateStaffConfig,readStaffCookie,verifyStaffMutation} from './staff-auth.ts';import type {StaffConfig} from './staff-auth.ts';import type {PrivateFileStore} from './private-files.ts';
 import {quotationWorkspace,createQuotationDraft,approveQuotation,recordQuotationDelivery,quotationDocument,quotationEvidence} from './quotations.ts';import type {QuotationConfig} from './quotations.ts';
 const json=(body:unknown,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'private, no-store'}});
@@ -14,5 +15,5 @@ export function quotationHandlers(database:()=>Database,staff:StaffConfig,config
  let body:Record<string,unknown>;try{body=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(Buffer.concat(chunks)));if(!body||typeof body!=='object'||Array.isArray(body))throw new Error();}catch{throw new StaffError(400,'INVALID_JSON');}
  const actions:Record<string,string[]>={draft:['action','requestId','version','expectedRevision','draftKey','currency','language','validUntil','items','terms','taxNote','revisionReason'],approve:['action','requestId','version','revisionId'],delivery:['action','requestId','version','revisionId','deliveryKey','channel','recipient','sentAt','evidenceReference','evidenceAttachmentId']};const action=String(body.action);if(!Object.hasOwn(actions,action)||Object.keys(body).some(k=>!actions[action].includes(k)))throw new StaffError(400,'INVALID_INPUT');
  switch(action){case 'draft':return json(await createQuotationDraft(database(),token,config,body),201);case 'approve':return json(await approveQuotation(database(),token,config,body));case 'delivery':return json(await recordQuotationDelivery(database(),token,config,store(),body));default:throw new StaffError(400,'INVALID_ACTION');}
- }catch(e){if(e instanceof StaffError)return json({code:e.message},e.status);return json({code:'TEMPORARILY_UNAVAILABLE'},503);}}
+ }catch(e){if(e instanceof StaffError){const kind=deniedKind(e.status,e.message);if(kind)await safeSecurityEvent(database,kind,'quotation-api');return json({code:e.message},e.status);}return json({code:'TEMPORARILY_UNAVAILABLE'},503);}}
  return {GET:(request:Request)=>run(request,false),POST:(request:Request)=>run(request,true)};}

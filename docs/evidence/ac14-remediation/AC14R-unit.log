@@ -1,0 +1,40 @@
+
+> kpn-wagon-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ attachment validation matches extension, declared MIME and signature (2.2435ms)
+✔ PostgreSQL schema: atomic outbox, duplicate prevention, status audit and CMS publication guard (1226.3465ms)
+✔ all locale navigation entries map to the same routes (0.9845ms)
+✔ authorization denies absent, inactive and privileged non-MFA sessions (0.2883ms)
+✔ sales cannot read another assignment or approve prices (0.2009ms)
+✔ content and viewer roles cannot access operational mutations (0.2139ms)
+✔ Quoted needs approved offer and delivery proof (0.212ms)
+✔ assignment, closure and terminal states are guarded (0.1707ms)
+✔ each freight service validates required details without marketing opt-in (1.048ms)
+✔ malformed input, spam, privacy omission and service-specific omissions fail (1.0527ms)
+✔ normalization has stable ordering, removes unrelated service fields and rejects unknown fields (1.9503ms)
+✔ local test gate cannot enable live intake, non-development or external origins (0.2357ms)
+✔ HTTP edge rejects missing origin, malformed JSON, oversized streaming payload and cross-site requests before database access (26.7808ms)
+✔ public interface and form dictionaries cover every locale, route, service and feedback state (2.7369ms)
+✔ retry backoff grows, caps and uses bounded jitter (0.8845ms)
+✔ provider uses fixed endpoint, immutable message and stable idempotency key (24.5269ms)
+✔ provider classifies permanent and transient errors without exposing response bodies (1.723ms)
+✔ quotation arithmetic preserves cents and rejects floating-point/scientific/negative values (1.8071ms)
+✔ draft validation rejects invalid dates, empty lines, unsupported currency and zero total (0.7559ms)
+✔ downloadable quotation escapes customer text and has no executable external content (0.5752ms)
+✔ quotation module requires an explicit development mode or approved live configuration (0.1381ms)
+✔ SEO stays closed without all release gates and rejects placeholder/local/untrusted origins (1.1295ms)
+✔ canonical is self-referencing and hreflang is reciprocal with Chinese script and Thai default (1.1249ms)
+✔ unpublished/test pages never become indexable and missing locales are excluded (0.289ms)
+✔ metadata is route-specific and JSON-LD cannot terminate its script or invent contacts/logo (0.3082ms)
+✔ all release flags are independently required; a known documentation origin is syntax-only, never company configuration (0.1908ms)
+✔ uncertain submissions reuse their original key and cannot silently create a new identity after edits (0.8999ms)
+✔ form text normalizes insignificant whitespace before calculating retry identity (0.1537ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1420.6177

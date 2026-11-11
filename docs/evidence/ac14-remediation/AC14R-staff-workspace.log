@@ -1,0 +1,25 @@
+
+> kpn-wagon-web@0.1.0 test:staff-workspace
+> node --test tests/staff-workspace.integration.mjs
+
+▶ staff workspace authorization and audited workflow on real PostgreSQL
+  ✔ dashboard/inbox count only permitted rows, never global totals for sales/viewers (13.1334ms)
+  ✔ owner/manager assignment records actor, assignee, status history and audit atomically (13.3259ms)
+  ✔ sales cannot assign, read another request or list staff accounts (6.6647ms)
+  ✔ stale versions cannot overwrite a concurrent assignment and viewers cannot be assignees (3.9648ms)
+  ✔ sales can record contact notes and change assigned status with actor/time audit (17.2275ms)
+  ✔ Quoted needs approved evidence and closure needs reason (9.6138ms)
+  ✔ reassignment immediately removes previous sales access (8.8006ms)
+  ✔ viewer can only read specifically assigned records and cannot mutate (4.8456ms)
+  ✔ HTTP ignores forged role headers, rejects CSRF, and applies authorization to every view/action (13.8013ms)
+  ✔ staff registry requires owner plus recent MFA and protects the final owner (11.8376ms)
+  ✔ database runtime cannot delete evidence (189.1749ms)
+✔ staff workspace authorization and audited workflow on real PostgreSQL (12585.8382ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13109.7719

@@ -1,0 +1,24 @@
+
+> kpn-wagon-web@0.1.0 test:attachments
+> node --test tests/attachments.integration.mjs
+
+▶ private attachments on real PostgreSQL and private disk
+  ✔ private upload is stored under a generated key and only clean files download (286.0704ms)
+  ✔ absent/expired/revoked capabilities cannot create attachments (13.2031ms)
+  ✔ same upload key replays once, changed file conflicts (13.6554ms)
+  ✔ unavailable scanner quarantines, blocks download, and can be retried after recovery (13.6102ms)
+  ✔ infected verdict stays rejected; unexpected and timed-out scanner verdicts stay quarantined (52.574ms)
+  ✔ expired scan leases recover and stale clean verdict cannot override a newer rejection (295.1885ms)
+  ✔ concurrent uploads across distinct permits cannot exceed five per request (1543.1653ms)
+  ✔ authorization denies other assignments, content editor, missing MFA and anonymous reads (20.0665ms)
+  ✔ corrupt objects, write failures and unsafe storage paths never release files (15.5905ms)
+✔ private attachments on real PostgreSQL and private disk (13733.958ms)
+✔ ClamAV INSTREAM adapter validates framing and fails closed on scanner errors (13.0569ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13971.8777

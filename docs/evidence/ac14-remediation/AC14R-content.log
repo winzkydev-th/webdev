@@ -1,0 +1,25 @@
+
+> kpn-wagon-web@0.1.0 test:content
+> node --test tests/content.integration.mjs
+
+▶ multilingual content approval on real PostgreSQL
+  ✔ operational roles cannot read or edit private content (7.1834ms)
+  ✔ twenty retries create one immutable revision and changed retry payload conflicts (959.1389ms)
+  ✔ draft never appears in public reads; another locale has no fallback (5.2024ms)
+  ✔ stale revisions and Editor publication are refused (10.5767ms)
+  ✔ recent MFA and independent reviewer required (20.6763ms)
+  ✔ new draft preserves the exact old public revision until approval (73.2394ms)
+  ✔ English publication stays isolated; unpublish preserves revision and audit history (22.7633ms)
+  ✔ test content cannot appear in live mode and disabled mode is closed (5.3252ms)
+  ✔ Simplified Chinese publishes independently and public credentials cannot read drafts (224.9738ms)
+  ✔ audit insertion failure rolls back both revision and workflow changes (14.1611ms)
+  ✔ HTTP requires session and CSRF and refuses forged privileges (8.0166ms)
+✔ multilingual content approval on real PostgreSQL (12830.3134ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13173.0794

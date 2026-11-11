@@ -1,0 +1,19 @@
+▶ AC14 remediation rate controls and durable internal alerting
+  ✔ one blocked browser cannot consume another browser budget and cooldown expires without account lock (24.7175ms)
+  ✔ network quota limits cookie rotation and limiter rejects before any provider discovery (14.2394ms)
+  ✔ concurrent budget updates permit exactly configured limit (370.5793ms)
+  ✔ security events aggregate, redact extra secret data, create internal alerts and are immutable (131.5445ms)
+SECURITY_EVENT_STORAGE_UNAVAILABLE csrf_denied staff-api
+  ✔ alert-write failure rolls back its window increment; logging outage cannot authorize a denied action (14.786ms)
+✔ AC14 remediation rate controls and durable internal alerting (6097.3074ms)
+✔ client identity accepts only signed cookie and verified edge attestation; forwarded headers never choose identity (17.5672ms)
+✔ network canonicalization prevents IPv6 text and mapped-IPv4 rotation bypass (3.632ms)
+✔ CSP requires unique nonce input and never enables unsafe script/style execution (0.3209ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6352.0911

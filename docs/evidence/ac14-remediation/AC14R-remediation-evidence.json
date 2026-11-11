@@ -1,0 +1,35 @@
+{
+  "scope": "isolated PostgreSQL 55452 and signed synthetic OIDC; real IdP/external delivery not tested",
+  "checks": [
+    {
+      "control": "per-browser cooldown",
+      "blockedClientDenied": true,
+      "otherClientAllowed": true,
+      "expiryRecovers": true,
+      "accountLockUsed": false
+    },
+    {
+      "control": "network/preflight",
+      "rotatedClientDenied": true,
+      "rejectedBeforeUnreachableDiscovery": true
+    },
+    {
+      "control": "atomic rate budget",
+      "concurrent": 15,
+      "allowed": 6
+    },
+    {
+      "control": "durable internal alert",
+      "created": true,
+      "ownerManagerOnly": true,
+      "idempotentAcknowledgement": true,
+      "noSecretFields": true,
+      "immutable": true
+    },
+    {
+      "control": "alert atomicity",
+      "rollbackVerified": true,
+      "denialSurvivesLoggingFailure": true
+    }
+  ]
+}

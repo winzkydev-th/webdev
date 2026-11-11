@@ -1,0 +1,3 @@
+'use client';
+import {useState} from 'react';import {useRouter} from 'next/navigation';
+export default function SecurityAck({csrf,id}:{csrf:string;id:string}){const router=useRouter();const [busy,setBusy]=useState(false);const [error,setError]=useState('');return <><button disabled={busy} onClick={async()=>{setBusy(true);try{const r=await fetch('/api/staff/security',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({alertId:id})});if(!r.ok)throw new Error();router.refresh();}catch{setError('ยังรับทราบรายการไม่ได้ กรุณาลองใหม่');}finally{setBusy(false);}}}>รับทราบ</button>{error&&<p role="alert">{error}</p>}</>;}

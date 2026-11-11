@@ -1,0 +1,119 @@
+{
+  "scope": "actual local HTTP only; synthetic preview; TLS not tested",
+  "observations": [
+    {
+      "route": "/th",
+      "perRequestNonceChanges": true,
+      "runs": [
+        {
+          "scripts": 13,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        },
+        {
+          "scripts": 13,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        }
+      ]
+    },
+    {
+      "route": "/en",
+      "perRequestNonceChanges": true,
+      "runs": [
+        {
+          "scripts": 13,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        },
+        {
+          "scripts": 13,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        }
+      ]
+    },
+    {
+      "route": "/zh",
+      "perRequestNonceChanges": true,
+      "runs": [
+        {
+          "scripts": 13,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        },
+        {
+          "scripts": 13,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        }
+      ]
+    },
+    {
+      "route": "/staff/login",
+      "perRequestNonceChanges": true,
+      "runs": [
+        {
+          "scripts": 11,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        },
+        {
+          "scripts": 11,
+          "allScriptsNonceMatched": true,
+          "inlineStyleAttributes": 0
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "expected": 415,
+      "actual": 415
+    },
+    {
+      "expected": 400,
+      "actual": 400
+    },
+    {
+      "expected": 413,
+      "actual": 413
+    },
+    {
+      "expected": 204,
+      "actual": 204
+    },
+    {
+      "route": "/api/staff",
+      "anonymousStatus": 401
+    },
+    {
+      "route": "/api/staff/quotations",
+      "anonymousStatus": 401
+    },
+    {
+      "route": "/api/staff/content",
+      "anonymousStatus": 401
+    },
+    {
+      "route": "/api/staff/security",
+      "anonymousStatus": 401
+    },
+    {
+      "route": "/.env",
+      "status": 404
+    },
+    {
+      "route": "/.git/config",
+      "status": 404
+    },
+    {
+      "route": "/src/lib/staff-auth.ts",
+      "status": 404
+    }
+  ]
+}

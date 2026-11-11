@@ -1,91 +1,145 @@
-# KPN WAGON — AC-14 Security Report
-วันที่: 10 พฤศจิกายน 2569 (Asia/Bangkok)
-Baseline: b60a8accdebb8998976953160fbfad94b1c40120. ก่อนเริ่มสำรอง tag backup/before-ac14 และ KPN-Git-Before-AC14.bundle ซึ่ง verify ผ่าน
+# KPN WAGON — AC-14 Security Remediation Report
+วันที่ 11 พฤศจิกายน 2569 (Asia/Bangkok) | Baseline c30c0c4be54e4ab3946f03db0ee0ec2502139bd3
 
-## ผลสรุปเพื่อให้เจ้าของตรวจรับ
-**AC-14: NOT PASSED / รอแก้ไขและทดสอบส่วนที่ยังขาด ไม่ใช่ Production Security Acceptance**
-Production Security Readiness: **NOT READY**. จำนวน Acceptance ฝั่งพัฒนายังคง 12/14 (85.7%); ไม่มีการเพิ่ม AC-14 เป็น Passed. AC-13 ยัง Pending โดเมนจริง
+**AC-14: PENDING ACCEPTANCE — เจ้าของยังไม่อนุมัติ / Production Security Readiness: NOT READY**
+สถานะรวม 12/14 (85.7%) ไม่เพิ่มจำนวนเกณฑ์ที่ผ่าน AC-13 ยัง Pending โดเมนจริง AC-11 คง APPROVED — LOCAL DEVELOPMENT DRILL ONLY ไม่ใช่ Production Acceptance
 
-ในกรณีทดสอบและ Code Review ที่ทำรอบนี้ ยังไม่พบช่องโหว่ที่ยืนยันได้ระดับ Critical/High; ข้อความนี้ไม่ใช่การยืนยันว่าไม่มีช่องโหว่ดังกล่าวในทุกส่วน โดยเฉพาะ dependency advisories, real IdP/MFA, malware engine และระบบ HTTPS/Production ซึ่งยังไม่ทดสอบครบ หากพบ Critical/High ในงานถัดไปต้องหยุดรายงานก่อนแก้ตามคำสั่งเจ้าของ
+## ขอบเขตและการรักษางานเดิม
+สำรองก่อนเปลี่ยนด้วย tag backup/before-ac14-remediation และ bundle KPN-Git-Before-AC14-Remediation.bundle ที่ตรวจสอบแล้ว ไม่ amend/เปลี่ยน baseline c30c0c4 หรือ b60a8ac เพิ่ม migration 009 แบบ additive ไม่แก้ migration เดิม ใช้เฉพาะ PostgreSQL และ signed synthetic OIDC บน loopback ข้อมูลสังเคราะห์ ไม่มีข้อมูลลูกค้าจริง ไม่มีส่งอีเมลจริง ไม่มีเชื่อมบริการภายนอกหรือ Deployment
+หลักฐาน AC14R-original-integrity.json เปรียบเทียบ Git blob ของ migration 001–008, AC-11 และ package files ตรง baseline ทุกไฟล์ ไม่ใช่การอ้างว่า fingerprint ฐาน Production แล้ว ฐานเดิมที่เจ้าของใช้ไม่ได้ถูกเปิดเพื่อเขียนโดยชุดทดสอบนี้
+รายงานเดิมเก็บไว้ใน Git c30c0c4 และ outputs/KPN-AC-14-Security-Report-before-remediation-c30c0c4.md
 
-บันทึก AC-11 ตามคำอนุมัติเป็น **APPROVED — LOCAL DEVELOPMENT DRILL ONLY** ใน docs/AC-11-OWNER-APPROVAL.md และ acceptance-status.json ข้อจำกัดก่อน Production: backup หลัง reboot; ทดสอบต่อเนื่องอย่างน้อย 24 ชั่วโมง; สำเนานอกเครื่อง; ระบบสำรอง/กู้ Encryption Key. ไม่มีการยกระดับเป็น Production Acceptance
+## Medium findings
+| Finding | ผลทดสอบจริง | ข้อจำกัดและสถานะตรวจรับ |
+|---|---|---|
+| M-01 Login rate limiting | PASS เฉพาะ local: browser 6/60 วินาที, network 120/60 วินาที; cooldown หมดแล้วกลับใช้ได้; browser อื่นยังใช้ได้; rotate client ถูก network จำกัด; 15 concurrent อนุญาต 6; ปฏิเสธก่อน discovery | Implemented / pending owner review. ไม่มี account-name lock; network /24 และ IPv6 /64 มีผลต่อผู้ใช้ร่วม NAT; distributed edge และ real IdP ต้องทดสอบก่อน Production |
+| M-02 CSP | PASS เฉพาะกรณี local: nonce ใหม่ทุก response, script tags มี nonce ตรงกัน, ไม่มี unsafe-inline/eval; browser self-test 3 ครั้ง allowed=true และ blocked=null; quoted HTML ใช้ CSS hash | Implemented / pending owner review. มี style-src-elem warning ระหว่าง browser tooling; DOM พบ browser comments overlay มี shadow style 1 จุด แต่ app style elements 0 จึงยังไม่รับรองว่าไม่มี app violation ทุกกรณี ต้องยืนยันอีกครั้งใน browser ปกติและ TLS staging ห้ามผ่อน CSP เพื่อทำให้เงียบ |
+| M-03 Detection & alerting | PASS เฉพาะ durable internal inbox: login failure/rate/success burst, unauthorized/CSRF/invalid requests/CSP; alert ตาม threshold; Owner/Manager + MFA claim; ack idempotent พร้อม audit; append-only และ rollback; authorization ยังคงปฏิเสธเมื่อ logging ล้มเหลว | Implemented / pending owner review. External alert delivery และ IdP/edge signal monitoring NOT TESTED ไม่มีการส่งแจ้งเตือนออกภายนอก |
 
-## ขอบเขตที่อนุญาตและสิ่งที่ทำจริง
-ตรวจเฉพาะ repository เดิมกับข้อมูลสังเคราะห์ใหม่ใน PostgreSQL loopback ที่แยกจากข้อมูลเดิม ชุดทดสอบใช้พอร์ต 55441/55442/55443/55444/55446/55447 และ 55450; ผู้ให้บริการ OIDC จำลองลงนาม RS256 จริงบน loopback ส่วน scanner/provider verdicts เป็นตัวจำลอง ไม่ใช่บริการจริง ไม่มีข้อมูลลูกค้าจริง ไม่มีการโจมตีภายนอก ไม่ติดตั้งบริการใหม่ ไม่ซื้อ/เชื่อมบริการ และไม่ Deployment
+ไม่พบ Critical/High ที่ยืนยันได้ในขอบเขตที่ทดสอบและ code review รอบนี้ ไม่ใช่คำรับรองว่าไม่มีช่องโหว่ในระบบทั้งหมด Medium เดิมทั้ง 3 อยู่สถานะรอตรวจรับหลังแก้ไข ไม่ลบประวัติหรือปรับลดความรุนแรง
 
-ทดสอบ HTTP เว็บไซต์ปกติที่ 127.0.0.1:3000 โดยปิด staff/intake/CMS ที่ยังไม่มีการตั้งค่าจริง และทดสอบ browser output encoding ของ quotationHtml/safeJsonLd ผ่าน harness สังเคราะห์พอร์ต 55451 เซิร์ฟเวอร์และคลัสเตอร์ทดสอบที่เปิดในรอบนี้ปิดหลังตรวจ ไม่เริ่มเว็บไซต์บนฐานที่กู้คืน ไม่รัน AC-11 ซ้ำ
+## รายการตรวจความปลอดภัยทั้งหมด
+PASS ในตารางหมายถึงเฉพาะกรณีทดสอบ local ที่ระบุ ผลเดิมอ้างรายงาน baseline โดยไม่รันซ้ำหากไม่เกี่ยวกับการแก้ไข
 
-ผลทดสอบจริงแยกจาก Code Review ในตารางต่อไปนี้ PASS หมายถึงเฉพาะกรณี/สภาพแวดล้อมที่ระบุ; FAIL คือพบการควบคุมที่ยังไม่ครบตามเป้าหมาย; NOT TESTED คือยังไม่มีหลักฐานทดสอบส่วนนั้น ระดับความรุนแรงใช้กับข้อค้นพบ ไม่ใส่ Critical/High/Medium/Low ให้รายการที่ยังไม่พบข้อบกพร่องหรือยังทดสอบไม่ได้โดยไม่มีเหตุรองรับ
+| # | รายการ | ผล / หลักฐาน / ความเสี่ยงคงเหลือ |
+|---|---|---|
+| 1 | SQL Injection | PASS local: targeted security suite ทดสอบ literal metacharacters, role-scoped search, invalid IDs; ไม่มี broadening ข้อมูล |
+| 2 | XSS | PASS local encoding/CMS literal script text และ browser CSP self-test; inherited quotation escaping tests ผ่าน; ไม่ใช่ exhaustive stored/DOM XSS assurance |
+| 3 | CSRF / Session | PASS local: cross-session/cross-site CSRF rejected; cookies, callback, revocation/session checks ใน auth suite; Production session/TLS policy NOT TESTED |
+| 4 | Brute force | PASS local M-01 ตามข้างต้น; real IdP brute-force/distributed edge NOT TESTED |
+| 5 | Authentication / MFA | PASS signed mock OIDC signature/state/PKCE/MFA-claim checks; **real MFA NOT TESTED** |
+| 6 | RBAC / horizontal access | PASS local integration และ HTTP: roles, assignment/reassignment revocation, Owner/Manager security inbox; production provisioning NOT TESTED |
+| 7 | Upload / Malware | PASS existing local upload/quarantine/download control regression; scanner verdict/protocol เป็นตัวจำลอง **real engine/EICAR/definitions NOT TESTED** |
+| 8 | API / rate limits | PASS local origin/type/size/shape/mass-assignment/rate checks; CSP endpoint 403/415/400/413/204; anonymous staff APIs 401; edge/load/slow-body resilience NOT TESTED |
+| 9 | HTTPS / Headers | PASS local nonce CSP + nosniff/DENY/no-store; **HTTPS/TLS/certificate/expiry/redirect/HSTS NOT TESTED** ไม่มีโดเมนที่อนุมัติ |
+| 10 | Secrets / Environment | Code review: new security events accept no arbitrary text/secrets, CSP diagnostics fixed enums only, edge key server-side; existing heuristic baseline evidence retained. Full secret inventory/rotation/KMS NOT TESTED |
+| 11 | PostgreSQL privileges | PASS local restricted fixture denies audit modification/schema CREATE; append-only security events/alerts/acks; Production network/TLS/provisioning NOT TESTED |
+| 12 | Audit / Alert | PASS durable local ledger, threshold/inbox/ack/rollback; notification retry regressionผ่านกับ providerจำลอง; real external routing/on-call/health monitoring NOT TESTED |
+| 13 | Current dependency advisories | **NOT TESTED** เจ้าของไม่อนุญาตเชื่อมภายนอก ไม่เรียก npm audit/OSV ไม่ใช้ offline zero เป็น PASS |
+| 14 | Backup security | ใช้ AC-11 ที่อนุมัติเฉพาะ local และ read-only integrity evidence เดิม ไม่รัน restore ซ้ำ ไม่แก้ Backup; reboot/24h/off-machine/key recovery ยังเป็น Production blockers |
 
-## รายการตรวจสอบทั้งหมด 14 หัวข้อ
-| # | หัวข้อ | ผลในขอบเขตนี้ | ความรุนแรงข้อค้นพบ | ทดสอบจริง | Code Review / ข้อจำกัด |
-|---|---|---|---|---|---|
-| 1 | SQL Injection | PASS — local cases | — | input ที่มี SQL metacharacters ถูกเก็บเป็น literal; search ไม่ขยาย scope; UUID payload ปฏิเสธ; จำนวนแถวคงตามคาด | ทบทวน parameterized queries และ allowlisted SQL fragments ใน intake/staff/quotation/CMS ไม่ใช่การพิสูจน์ทุก payload ที่เป็นไปได้ |
-| 2 | XSS | PASS — tested output sinks | — | browser แสดง payload เป็นข้อความ; quotation มี script=0/img=0/event attributes=0; JSON-LD มีเพียง application/ld+json 1 ตัว executable script=0; title ไม่ถูกเปลี่ยน | ตรวจ JSX text rendering, escape ในเอกสาร และ safeJsonLd; ไม่ได้ทดสอบ stored XSS ผ่านการเผยแพร่ CMS จริงทุกหน้าหรือ rich-text/media ที่ยังไม่ทำ |
-| 3 | CSRF / Session Hijacking | PASS — local controls; actual stolen-device scenario NOT TESTED | — | ข้าม origin/session CSRF ถูก 403; forged/missing session ถูก 401; callback replay/tampered cookie/nonce/signature/issuer/audience/expiry ถูกปฏิเสธ; idle/hard expiry/logout/role revocation ผ่าน | Cookie HttpOnly/SameSite และ Secure/__Host ใน HTTPS config; ไม่มีการขโมย session จริงหรือทดสอบเครื่องผู้ใช้ที่ถูก compromise และไม่รับรองว่า bearer token ที่ถูกขโมยใช้ไม่ได้ก่อน revoke |
-| 4 | Brute Force / Login Rate | FAIL — layered protection incomplete | Medium M-01 | เพดาน login 100 ครั้ง/15 นาทีทำให้ครั้งเกินได้ 429 และไม่สร้าง transaction ใหม่ | bucket เป็น global ร่วมกัน และ provider discovery เกิดก่อน limiter; password brute force/lockout ของ IdP จริง NOT TESTED |
-| 5 | Authentication / MFA | PASS — signed local OIDC tests; real provider NOT TESTED | — | code+PKCE, RS256/JWKS validation, state/nonce/auth_time และการปฏิเสธ Owner/Manager ที่ไม่มี ACR ที่กำหนดผ่าน | ACR ในตัวจำลองไม่ใช่ MFA challenge จริง; enrollment/recovery/provider policy/revocation ต้องทดสอบกับผู้ให้บริการที่เจ้าของอนุมัติ |
-| 6 | RBAC / Cross-user access | PASS — local scoped cases | — | forged role ไม่เพิ่มสิทธิ์; Sales/Viewer เห็นเฉพาะงานที่มอบหมาย; Editor เข้า operations ไม่ได้; มอบหมายใหม่ตัดสิทธิ์เดิม; แยกผู้ทำ/ผู้อนุมัติราคาและ CMS; fresh MFA/last owner ผ่าน | Production role mapping/SQL grants จริงยังต้องตรวจในสภาพแวดล้อมเป้าหมาย |
-| 7 | Upload / Malware Scanning | PASS — validation/quarantine; real malware scan NOT TESTED | — | ไฟล์ผิดชนิด/ขนาด/ชื่อ, quarantine, scanner timeout/unavailable, rejected verdict, hash mismatch, expired scan lease และ quota race ปิดการปล่อยไฟล์ได้; download authorization ผ่าน | signature checks ไม่ใช่ full parser/CDR; verdict/protocol server เป็นตัวจำลอง ไม่มี real ClamAV engine/EICAR/definitions/health test และ public upload ยังปิด |
-| 8 | API / Rate Limiting | PASS — local rejection cases; edge abuse coverage NOT TESTED | — | cross-origin 403, content type 415, oversized 413, malformed JSON 400, mass assignment 422, prototype action 400, contact limiter 429; ไม่มีข้อมูลเพิ่มหลังถูกจำกัด | global/contact limiter ไม่ใช่ per-client trusted-edge protection; slow-body/concurrency/exhaustion/load attacks ไม่ได้รันเพื่อไม่สร้างผลกระทบ |
-| 9 | HTTPS / Security Headers | FAIL — CSP incomplete; HTTPS NOT TESTED | Medium M-02 | HTTP 12 จุด: nosniff, DENY, referrer policy, permissions policy, no x-powered-by, ไม่มี CORS wildcard; sensitive file probes 403/404; staff APIs ปิดเป็น 503 และคืนเพียง safe code | CSP ไม่มี default-src/script-src; HTTP loopback ไม่มี HSTS ตามหลักฐาน ไม่ได้ตรวจจริง TLS/certificate/proxy/redirect/HSTS บน host ที่อนุมัติ ห้ามตีความ local HTTP ว่าผ่าน HTTPS |
-| 10 | Secrets / Environment | PASS — limited heuristic; full credential review NOT TESTED | — | สแกนไฟล์ที่ติดตามใน Git 115 ไฟล์ตาม pattern ไม่พบ private-key/common-token/literal DB password หรือ sensitive NEXT_PUBLIC reference; HTTP ปิด .env/.git/source/package file probes | มีเพียง .env.example ในการตรวจนี้; heuristic ไม่รับประกันตรวจพบ secret ทุกชนิด ไม่มีการอ่าน/หมุนเวียน Production secrets หรือ KMS/rotation test |
-| 11 | PostgreSQL Access Control | PASS — fixture runtime; Production policy NOT TESTED | — | restricted runtime ถูกปฏิเสธ DELETE/UPDATE audit และ CREATE TABLE (42501); worker ลบคำขอ/audit ไม่ได้; public CMS role อ่าน private drafts ไม่ได้ | เป็น grants ในฐานทดสอบ ไม่ใช่การรับรอง Production network isolation/TLS/role provisioning หรือสิทธิ์ migration owner |
-| 12 | Audit Logs / Alerts | PASS — integrity; FAIL — security monitoring readiness | Medium M-03 | audit/assignment/status/approval append-only และ rollback เมื่อเขียน audit ไม่ครบผ่าน; notification retry/lease/dedupe/dead-letter ผ่านกับ provider จำลอง | ไม่มีหลักฐาน end-to-end security alerting; callback log เป็น safe code แต่ failed/denied API events ไม่ครบใน durable security ledger; IdP/edge monitoring ยังไม่เชื่อม |
-| 13 | Dependency Vulnerability Scan | NOT TESTED — current advisories | — | npm audit --offline --ignore-scripts --json รันและคืน zero แต่ไม่ใช่ security scan ที่รับรองได้ | ตรวจ source npm ในเครื่อง audit-report.js พบ offline=true จะ return null ก่อนขอ advisory จึงไม่นับผล zero เป็น PASS; ไม่ส่ง dependency metadata ไป npm/OSV/บริการอื่นเพราะยังไม่อนุมัติ |
-| 14 | Backup Security | PASS — approved local artifacts; disaster recovery NOT TESTED | — | อ่าน cipher hash/manifest hash ตรง AC-11; ACL vault/keys ยัง protected; อาศัยผล Restore/wrong-key/corruption จาก AC-11 ที่เจ้าของอนุมัติ โดยไม่รันซ้ำ | ปกป้องเฉพาะ local scope; reboot/24h/off-machine/key recovery ยังเป็นข้อบังคับก่อน Production ไม่มีการแก้ backup implementation |
+## ผลทดสอบและหลักฐาน
+หลักฐานอยู่ docs/evidence/ac14-remediation/ พร้อม manifest.json (SHA-256) และ outputs/ ชื่อเดียวกัน
 
-## ชุดทดสอบจริงและหลักฐาน
-| ชุดทดสอบ | ผลที่ Node รายงาน | หลักฐาน |
-|---|---:|---|
-| staff-auth | 11 passed / 0 failed | AC-14-staff-auth-test.log |
-| staff-workspace | 12 passed / 0 failed | AC-14-staff-workspace-test.log |
-| attachments | 11 passed / 0 failed | AC-14-attachments-test.log |
-| quotations | 13 passed / 0 failed | AC-14-quotations-test.log |
-| content | 12 passed / 0 failed | AC-14-content-test.log |
-| notifications | 10 passed / 0 failed | AC-14-notifications-test.log |
-| targeted | 7 passed / 0 failed | AC-14-targeted-test.log |
+| ชุด | ผลที่เครื่องมือรายงาน | หลักฐาน |
+|---|---|---|
+| Unit ล่าสุด | 31 passed, 0 failed | AC14R-unit-final.log |
+| Remediation integration + pure checks | 9 passed, 0 failed (รวม parent) | AC14R-remediation.log / AC14R-remediation-evidence.json |
+| Security SQL/CSRF/API targeted | 7 passed, 0 failed (รวม parent) | AC14R-security-final.log |
+| Staff auth / workspace | 11 / 12 passed, 0 failed | AC14R-staff-auth.log / AC14R-staff-workspace.log |
+| Quotation / CMS | 13 / 12 passed, 0 failed | AC14R-quotations.log / AC14R-content.log |
+| Notification / attachments regression | 10 / 11 passed, 0 failed | AC14R-notifications.log / AC14R-attachments.log |
+| TypeScript / Build | PASS | AC14R-typecheck.log / AC14R-build.log |
+| Staff HTTP / quotation HTTP | PASS actual Next HTTP with synthetic signed IdP; delivery proof saved, document hash matched, status Quoted, externalMessagesSent=0 | AC14R-staff-http-final.log / AC14R-quotation-http-final.log |
+| CSP / safe HTTP paths | PASS: nonce rotation 4 HTML routes, matching script nonces, 5 report input cases, 4 anonymous API families, 3 sensitive paths | AC14R-http-csp-final.json |
+| Public desktop/mobile | 72 route-language-viewport observations, no overflow/missing h1 in inspected cases (12 routes × 3 locales × 2 sizes) | AC14R-public-browser-matrix.json |
+| Conditional service forms | 12 browser selections TH/EN/ZH; EN air request saved KPN-6 in synthetic preview | AC14R-form-conditional-final.json / AC14R-form-submit-final.jpg |
+| CMS / alert inbox UI | Synthetic draft→review→publish, literal script text; Owner alert acknowledgement; desktop/mobile screenshots | AC14R-cms-published-csp.jpg / AC14R-security-inbox-desktop.jpg / AC14R-security-inbox-mobile.jpg |
+| CSP enforcement / tooling observation | 3 actual browser checks allowed script ran, injected inline did not; browser overlay shadow-style observation preserved | AC14R-csp-final.json / AC14R-csp-overlay-observation.json |
 
-ตัวเลขด้านบนรวม parent tests ตามรูปแบบของ Node ไม่ใช่จำนวนช่องโหว่หรือเปอร์เซ็นต์ความครอบคลุม ทวนชุดเดิมเฉพาะที่มีเหตุผลตรงกับ AC-14 ไม่รัน build หรือชุด UI/ภาษา/SEO ที่ไม่เกี่ยวข้องซ้ำ
+จำนวน test รวม parent ตาม Node ไม่ใช่จำนวนช่องโหว่หรือเปอร์เซ็นต์ coverage ตัวจำลองไม่ถูกนับเป็น real integration
+มี preview restart attempt 1 ครั้งไม่สำเร็จเพราะ preview เดิมยังใช้งานอยู่; หลังตรวจ session แล้ว HTTP/browser ใช้ preview เดิมที่เป็น synthetic เท่านั้น ไม่ถือ attempt ที่ล้มเหลวเป็น PASS
 
-Additional evidence:
-- AC-14-targeted-evidence.json: 6 กลุ่มโจมตีเฉพาะ SQL/CSRF/API/login/SQL privilege
-- AC-14-xss-browser-evidence.json และ AC-14-xss-quotation.jpg: DOM/ภาพจาก browser จริงของเอกสารสังเคราะห์
-- AC-14-http-and-secret-evidence.json: 12 HTTP probes, headers และ heuristic source scan ไม่พิมพ์ค่า credentials
-- AC-14-backup-review-evidence.json: read-only hash/ACL ของ Backup ที่อนุมัติแล้ว
-- AC-14-dependency-audit-offline.json: เก็บเพื่อแสดงข้อจำกัด ไม่ใช่หลักฐานว่าไม่มี dependency vulnerabilities
+## สิ่งที่ต้องเตรียมก่อนตรวจรับ/Production
+1. Real MFA: เจ้าของเลือก/อนุมัติ IdP ของบริษัทและ test tenant/accounts; ทดสอบ MFA enrolment, bypass/claim policy, recovery, logout/revocation และ provisioning ห้ามสมัครบริการเอง
+2. Malware engine: เลือก local ClamAV หรือบริการที่อนุมัติ; ต้องอนุมัติการรับ engine/definitions จากภายนอกก่อน ทดสอบ safe file และ standard EICAR, engine failure/timeout/quarantine ด้วยข้อมูลทดสอบ Engine จริงยังไม่มีหลักฐาน
+3. HTTPS/TLS: เตรียม host/certificate ที่อนุมัติและแยก staging ทดสอบ chain/hostname/expiry/redirect/HSTS/cookie/edge ไม่มีการติดตั้ง trust root หรือ bypass browser warnings ในรอบนี้
+4. Advisories: รออนุมัติส่งชื่อ/เวอร์ชัน packages ไป registry หรือรับฐาน advisory แบบ offline ที่มีวันปรับปรุงและแหล่งตรวจสอบได้ ไม่มีข้อมูลปัจจุบันจึง NOT TESTED
+5. Trusted edge: ต้องลบ header จาก client และลง HMAC attestation จริง เก็บ STAFF_EDGE_KEY ใน secret store; ป้องกัน network cap abuse/NAT impact และ distributed volumetric load ที่ edge/IdP ทดสอบจริงก่อนใช้ Production
+6. Monitoring: local inbox เป็น durable evidence ต้องตั้งผู้รับผิดชอบ/ระยะเวลาตอบสนอง/retention/capacity/cleanup ของ buckets และ real external alerting ที่อนุมัติ; reporter limit 60 requests/min/process ป้องกัน amplification แต่ attacker อาจทำให้ reports ช่วงนั้นตกหล่น ต้องตรวจ health ที่ edge
+7. Backup: automatic after reboot, continuous ≥24h, off-machine copy, independent encryption key recovery ตามเงื่อนไข AC-11 เดิม
+8. CSP: ยืนยัน browser ปกติที่ไม่มี tooling overlay และ real staging; CSP_LOCAL_TEST ต้อง false ใน deployment, route test เปิดเฉพาะ APP_ENV=development + loopback + explicit flag
 
-## ข้อค้นพบที่ต้องแก้ก่อน Production — ยังไม่ได้แก้ในรอบนี้
-### M-01 — Login throttling แบบ global และงาน discovery ก่อนจำกัด (Medium)
-อ้างอิง src/lib/staff-auth.ts:23–27. Runtime ยืนยัน 429 เมื่อ bucket ถึง 100; Code Review ยืนยัน bucket เดียวสำหรับทุกผู้ใช้และ provider discovery มาก่อน ผลคือผู้ไม่เข้าสู่ระบบอาจใช้โควตาร่วมจนผู้ใช้ปกติเริ่ม login ไม่ได้ในช่วงหน้าต่างนั้น และคำขอที่ควรถูกจำกัดยังทำงาน provider discovery ก่อน ไม่ได้รัน load/DoS หรือโจมตี IdP จริง และยังไม่พิสูจน์การล้มทั้งระบบ จึงไม่อ้างระดับ High จากสิ่งที่ไม่ได้วัด
+## ไฟล์เปลี่ยนแปลง
+รายการ source/config/tests ก่อนเพิ่มรายงานและ evidence (เอกสารและ evidence เพิ่มใน commit เดียวกัน):
+- .env.example
+- database/009_security.sql
+- docs/AC-14-LOCAL-SECURITY-RUNBOOK.md
+- docs/evidence/ac14-remediation/AC14R-attachments.log
+- docs/evidence/ac14-remediation/AC14R-build.log
+- docs/evidence/ac14-remediation/AC14R-cms-published-csp.jpg
+- docs/evidence/ac14-remediation/AC14R-content.log
+- docs/evidence/ac14-remediation/AC14R-csp-browser-current.json
+- docs/evidence/ac14-remediation/AC14R-csp-browser-selftest.json
+- docs/evidence/ac14-remediation/AC14R-csp-final.json
+- docs/evidence/ac14-remediation/AC14R-csp-overlay-observation.json
+- docs/evidence/ac14-remediation/AC14R-csp-selftest.jpg
+- docs/evidence/ac14-remediation/AC14R-form-conditional-final.json
+- docs/evidence/ac14-remediation/AC14R-form-submit-final.jpg
+- docs/evidence/ac14-remediation/AC14R-http-csp-final.json
+- docs/evidence/ac14-remediation/AC14R-notifications.log
+- docs/evidence/ac14-remediation/AC14R-original-integrity.json
+- docs/evidence/ac14-remediation/AC14R-public-browser-matrix.json
+- docs/evidence/ac14-remediation/AC14R-quotation-http-final.log
+- docs/evidence/ac14-remediation/AC14R-quotations.log
+- docs/evidence/ac14-remediation/AC14R-remediation-evidence.json
+- docs/evidence/ac14-remediation/AC14R-remediation.log
+- docs/evidence/ac14-remediation/AC14R-security-final.log
+- docs/evidence/ac14-remediation/AC14R-security-inbox-desktop.jpg
+- docs/evidence/ac14-remediation/AC14R-security-inbox-mobile.jpg
+- docs/evidence/ac14-remediation/AC14R-staff-auth.log
+- docs/evidence/ac14-remediation/AC14R-staff-http-final.log
+- docs/evidence/ac14-remediation/AC14R-staff-workspace.log
+- docs/evidence/ac14-remediation/AC14R-typecheck.log
+- docs/evidence/ac14-remediation/AC14R-unit-final.log
+- docs/evidence/ac14-remediation/AC14R-unit.log
+- docs/evidence/ac14-remediation/manifest.json
+- next.config.ts
+- scripts/staff-preview.mjs
+- src/app/(entry)/layout.tsx
+- src/app/(entry)/security-test/csp/route.ts
+- src/app/(staff)/layout.tsx
+- src/app/(staff)/staff/auth/callback/route.ts
+- src/app/(staff)/staff/auth/login/route.ts
+- src/app/(staff)/staff/auth/logout/route.ts
+- src/app/(staff)/staff/content/[pageId]/[locale]/page.tsx
+- src/app/(staff)/staff/security/page.tsx
+- src/app/[locale]/[[...slug]]/page.tsx
+- src/app/[locale]/layout.tsx
+- src/app/api/security/csp/route.ts
+- src/app/api/staff/security/route.ts
+- src/app/globals.css
+- src/components/security-actions.tsx
+- src/components/staff-shell.tsx
+- src/lib/content-http.ts
+- src/lib/csp.ts
+- src/lib/login-protection.ts
+- src/lib/quotation-document.ts
+- src/lib/quotation-http.ts
+- src/lib/security-events.ts
+- src/lib/security-inbox.ts
+- src/lib/staff-auth.ts
+- src/lib/staff-http.ts
+- src/proxy.ts
+- tests/content.integration.mjs
+- tests/quotations.integration.mjs
+- tests/security-http.acceptance.mjs
+- tests/security-remediation.integration.mjs
+- tests/security-remediation.test.mjs
+- tests/security.acceptance.integration.mjs
+- tests/staff-workspace.integration.mjs
 
-แผนเสนอ: วาง preflight rate limiting ก่อน discovery; ใช้ layered trusted-edge/client/global limits ที่ไม่ให้ client key ชี้นำสิทธิ์; ยืนยัน password/MFA brute-force controls ที่ IdP; ทดสอบว่า client เดียวไม่กินโควตาทุกคน และ request เกินไม่แตะ discovery พร้อม audit ที่ไม่เก็บ credential. ต้องตกลง proxy/client identity policy ก่อน implementation
+เอกสารเพิ่ม/อัปเดต: docs/KPN-AC-14-Security-Report.md, docs/AC-14-LOCAL-SECURITY-RUNBOOK.md, docs/acceptance-status.json, docs/evidence/ac14-remediation/*; รายงานฉบับส่งเจ้าของใน outputs/KPN-AC-14-Security-Report.md
 
-### M-02 — CSP ยังไม่จำกัดแหล่งสคริปต์ (Medium)
-อ้างอิง next.config.ts:11 และ header จริงในหลักฐาน ไม่มี default-src/script-src แม้มี frame-ancestors/object-src/base-uri/form-action จึงขาดแนวป้องกันซ้อนสำหรับ script injection ไม่พบ XSS ที่ทำงานได้ใน sink ที่ตรวจ และไม่ได้อ้างว่าการไม่มี CSP ทำให้ bypass authentication ได้
-
-แผนเสนอ: ออกแบบ nonce/hash-based CSP ให้เข้ากับ Next.js และทั้ง public/staff layouts; ทดลอง Report-Only ในพื้นที่ที่อนุมัติก่อน enforce; ทดสอบ hydration/forms/print/download/JSON-LD และยืนยันไม่มีการเพิ่ม unsafe-eval หรือผ่อนนโยบายเพียงเพื่อให้ผ่าน ส่วน TLS/HSTS ต้องกำหนดและทดสอบตาม deployment ที่อนุมัติ ไม่เปิดจากผล HTTP loopback
-
-### M-03 — การตรวจจับและแจ้งเตือน security events ยังไม่พร้อม (Medium)
-อ้างอิง staff-auth.ts, staff-http.ts, callback route และ notification worker. มี business audit/append-only และ safe callback error code แต่ยังไม่มีหลักฐานการรวม failed authentication/authorization/CSRF/rate-limit events และการส่ง alert ไปถึงผู้รับที่อนุมัติ ข้อนี้เป็นช่องว่างการตรวจจับ/ปฏิบัติการ ไม่ใช่การยืนยันว่า audit ธุรกิจถูกแก้ไขได้
-
-แผนเสนอ: กำหนด event taxonomy/retention, บันทึก event แบบ redacted และไม่ให้ผู้โจมตีเติม log จนทรัพยากรหมด; ตั้ง threshold และทดสอบ alert delivery/retry/reconciliation กับปลายทางที่เจ้าของอนุมัติ ไม่ตั้งปลายทางสมมติหรือส่งข้อความออกในรอบนี้
-
-## ความเสี่ยงและงานค้างก่อน Production
-1. แก้ M-01/M-02/M-03 ตามแผนที่อนุมัติและเก็บ regression/security evidence ใหม่เฉพาะจุด ไม่ลดมาตรฐานเพื่อให้ผ่าน
-2. ขออนุมัติวิธีตรวจ advisory ปัจจุบัน: อาจอนุญาตส่งเฉพาะ package names/versions ไป registry advisory หรือใช้ฐาน advisory ที่จัดเตรียมแบบ offline แล้ว ต้องไม่ส่ง source/secrets/customer data และต้องไม่สรุปว่าปลอดช่องโหว่จาก npm offline zero
-3. ทดสอบ real IdP/MFA assurance, recovery/disable/revocation กับบัญชีทดสอบที่ได้รับอนุญาต; ห้ามแทนด้วย ACR จำลองแล้วนับเป็น Production MFA
-4. ทดสอบ malware engine จริง ความทันสมัย definitions, scanner health/outage, safe test samples และ private object authorization ก่อนเปิด public upload
-5. ยืนยัน HTTPS/TLS/proxy/Host/HSTS, network isolation, real SQL grants, secrets lifecycle และ monitoring บน environment ที่เจ้าของอนุมัติ ใช้ข้อมูลทดสอบ ไม่มีการอ้างว่า domain/Production ตรวจแล้ว
-6. ปิดเงื่อนไข AC-11 ที่อนุมัติเฉพาะ local ทั้ง 4 ข้อ; ยังไม่ถือว่า Backup รองรับเครื่องเสีย/profile สูญหายหรือสำเนานอกเครื่อง
-7. ห้ามเปิด live intake/uploads/issuance/indexing/Production deployment เพื่อให้รายงานดูครบ ขณะนี้หลาย gate ยังปิดโดยเจตนาและเป็นข้อจำกัดความพร้อม ไม่ใช่หลักฐานผ่านระบบจริง
-
-## ไฟล์ที่สร้างหรือแก้ไข
-Modified: docs/acceptance-status.json — บันทึกคำอนุมัติ AC-11 และสถานะ AC-14 ไม่ผ่าน/รอ review เท่านั้น
-Created: docs/AC-11-OWNER-APPROVAL.md; tests/security.acceptance.integration.mjs; tests/security-render-preview.mjs; tests/security-http.acceptance.mjs; docs/KPN-AC-14-Security-Report.md; docs/evidence/ac14/* (logs/JSON หลักฐาน).
-Outputs: KPN-AC-14-Security-Report.md, logs/JSON ที่ระบุ, XSS screenshot และ KPN-Git-Before-AC14.bundle. Temporary probe helpers อยู่ใน workspace work/; ไม่เพิ่ม production dependency
-
-ไม่มีการแก้ src/, next.config.ts, package manifests, database migrations, encryption/backup implementation หรือโค้ดระบบธุรกิจเพื่อปิดข้อค้นพบ ในการพัฒนาตัวทดสอบ HTTP ครั้งแรกคาด safe error code ของระบบปิดไว้แคบเกินไป จึงแก้ assertion ให้ตรวจ 503 และ body เพียง safe allowlisted code ที่ตรงพฤติกรรมจริง ไม่ได้ผ่อนการตรวจสิทธิ์หรือแก้ระบบให้ผ่าน
-
-## จุดหยุดและการอนุมัติ
-การประเมินรอบนี้เสร็จในขอบเขต local ที่ทำได้ แต่ **ไม่เสนออนุมัติ AC-14 เป็น Passed** ให้เจ้าของตรวจรายงานและอนุมัติแผนแก้/ทดสอบส่วนที่ขาดก่อนเริ่มขั้นต่อไป ไม่ Deployment ไม่ซื้อหรือเชื่อมบริการ และไม่เริ่มงานอื่น. AC-11 ยังคง APPROVED — LOCAL DEVELOPMENT DRILL ONLY; AC-13 Pending; จำนวน Passed development ยังคง 12/14
+## ข้อเสนอเพื่อเจ้าของตรวจสอบ
+ให้ตรวจการแก้ M-01/M-02/M-03 เฉพาะ local จากหลักฐานที่แนบ ยังไม่อนุมัติ AC-14 เอง และยังไม่พร้อม Production ไม่เริ่ม AC-13/Deployment/บริการภายนอก รอเจ้าของอนุมัติขอบเขตและ prerequisites ของ real integrations ก่อนดำเนินงานต่อ

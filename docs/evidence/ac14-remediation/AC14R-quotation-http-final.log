@@ -1,0 +1,13 @@
+
+> kpn-wagon-web@0.1.0 test:quotation-http
+> node tests/quotation-http-smoke.mjs
+
+{
+  "quoteRequest": "KPN-1",
+  "revision": 1,
+  "fullHttpWorkflow": "pass",
+  "approvedDocumentHash": "pass",
+  "privateEvidenceDownload": "pass",
+  "status": "Quoted",
+  "externalMessagesSent": 0
+}

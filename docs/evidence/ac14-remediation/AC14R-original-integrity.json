@@ -1,0 +1,76 @@
+{
+  "baseline": "c30c0c4be54e4ab3946f03db0ee0ec2502139bd3",
+  "scope": "Tracked migration 001-008, AC-11 evidence/documents and package files unchanged; all executed tests use synthetic fixtures. This is not a production data fingerprint.",
+  "files": [
+    {
+      "file": "database/001_foundation.sql",
+      "baselineBlob": "67239c88ba49bab16e77a68e54c45131481b3a0c",
+      "currentBlob": "67239c88ba49bab16e77a68e54c45131481b3a0c"
+    },
+    {
+      "file": "database/002_intake.sql",
+      "baselineBlob": "113a9191d4778f8d1075eb521c396c94bce084e1",
+      "currentBlob": "113a9191d4778f8d1075eb521c396c94bce084e1"
+    },
+    {
+      "file": "database/003_notifications.sql",
+      "baselineBlob": "1dc10846854590e8ebedb72de7f9f3a50789c48d",
+      "currentBlob": "1dc10846854590e8ebedb72de7f9f3a50789c48d"
+    },
+    {
+      "file": "database/004_attachments.sql",
+      "baselineBlob": "189eaadcd63178d6c9b126f888f733b56c7e02f0",
+      "currentBlob": "189eaadcd63178d6c9b126f888f733b56c7e02f0"
+    },
+    {
+      "file": "database/005_staff_sessions.sql",
+      "baselineBlob": "f17f81c6ef8f3badf47b8c301abbc575b58f8dab",
+      "currentBlob": "f17f81c6ef8f3badf47b8c301abbc575b58f8dab"
+    },
+    {
+      "file": "database/006_quotations.sql",
+      "baselineBlob": "a1ccba23ea0aeb82f81398cd1360067873bf49e5",
+      "currentBlob": "a1ccba23ea0aeb82f81398cd1360067873bf49e5"
+    },
+    {
+      "file": "database/007_content.sql",
+      "baselineBlob": "b09d8c2b4e7de5c7933360ca40511241f9974595",
+      "currentBlob": "b09d8c2b4e7de5c7933360ca40511241f9974595"
+    },
+    {
+      "file": "database/008_public_content_view.sql",
+      "baselineBlob": "3b1dff99c35968eb72f9ff1f6c1029aab9108a08",
+      "currentBlob": "3b1dff99c35968eb72f9ff1f6c1029aab9108a08"
+    },
+    {
+      "file": "docs/AC-11-OWNER-APPROVAL.md",
+      "baselineBlob": "6ea761d446dafb0cc68fdf96223b8b88a79f56c2",
+      "currentBlob": "6ea761d446dafb0cc68fdf96223b8b88a79f56c2"
+    },
+    {
+      "file": "docs/AC-11-REPORT.md",
+      "baselineBlob": "c3be945d780fd93f3e6b9c680b6fd065d5c8ef7a",
+      "currentBlob": "c3be945d780fd93f3e6b9c680b6fd065d5c8ef7a"
+    },
+    {
+      "file": "docs/AC-11-VERIFICATION.md",
+      "baselineBlob": "1c47038e452391e444355449f245228a0470a951",
+      "currentBlob": "1c47038e452391e444355449f245228a0470a951"
+    },
+    {
+      "file": "docs/evidence/ac11/restore-evidence.json",
+      "baselineBlob": "9f9403220b1de7cae194789bb1a6554695d64a15",
+      "currentBlob": "9f9403220b1de7cae194789bb1a6554695d64a15"
+    },
+    {
+      "file": "package-lock.json",
+      "baselineBlob": "9af0ab7a22cc537119bcca512d5114825b2fc5a5",
+      "currentBlob": "9af0ab7a22cc537119bcca512d5114825b2fc5a5"
+    },
+    {
+      "file": "package.json",
+      "baselineBlob": "b434f9075589ce432a6829a54d0ffcadade4c150",
+      "currentBlob": "b434f9075589ce432a6829a54d0ffcadade4c150"
+    }
+  ]
+}

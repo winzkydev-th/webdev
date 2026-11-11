@@ -1,3 +1,4 @@
+import {safeSecurityEvent,deniedKind} from './security-events.ts';
 import type {Database} from './intake.ts';import {StaffError,validateStaffConfig,readStaffCookie,sessionCsrf,verifyStaffMutation} from './staff-auth.ts';import type {StaffConfig} from './staff-auth.ts';
 import {staffMe,staffDashboard,staffInbox,staffRequest,staffAssignees,listStaffAccounts,assignStaffRequest,addStaffActivity,changeStaffStatus,manageStaffAccount} from './staff-workspace.ts';
 function json(body:unknown,status=200){return Response.json(body,{status,headers:{'Cache-Control':'private, no-store'}});}
@@ -17,6 +18,6 @@ export function staffHandlers(database:()=>Database,config:StaffConfig){
  const actions:Record<string,string[]>={assign:['action','requestId','assigneeId','version'],activity:['action','requestId','channel','note'],status:['action','requestId','status','reason','version'],'staff-create':['action','displayName','subject','role','active'],'staff-update':['action','id','displayName','role','active']};
  const action=String(body.action);if(!Object.hasOwn(actions,action)||Object.keys(body).some(key=>!actions[action].includes(key)))throw new StaffError(400,'INVALID_INPUT');
  switch(action){case 'assign':return json(await assignStaffRequest(database(),token,body as Parameters<typeof assignStaffRequest>[2]));case 'activity':return json(await addStaffActivity(database(),token,body as Parameters<typeof addStaffActivity>[2]));case 'status':return json(await changeStaffStatus(database(),token,body as Parameters<typeof changeStaffStatus>[2]));case 'staff-create':case 'staff-update':return json(await manageStaffAccount(database(),token,body as Parameters<typeof manageStaffAccount>[2],config.issuer));default:throw new StaffError(400,'INVALID_ACTION');}
- }catch(error){if(error instanceof StaffError)return json({code:error.message},error.status);return json({code:'TEMPORARILY_UNAVAILABLE'},503);}}
+ }catch(error){if(error instanceof StaffError){const kind=deniedKind(error.status,error.message);if(kind)await safeSecurityEvent(database,kind,'staff-api');return json({code:error.message},error.status);}return json({code:'TEMPORARILY_UNAVAILABLE'},503);}}
  return {GET:(request:Request)=>run(request,false),POST:(request:Request)=>run(request,true)};
 }

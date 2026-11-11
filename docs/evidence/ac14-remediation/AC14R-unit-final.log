@@ -1,0 +1,43 @@
+
+> kpn-wagon-web@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ attachment validation matches extension, declared MIME and signature (2.0163ms)
+✔ PostgreSQL schema: atomic outbox, duplicate prevention, status audit and CMS publication guard (1281.7985ms)
+✔ all locale navigation entries map to the same routes (1.1542ms)
+✔ authorization denies absent, inactive and privileged non-MFA sessions (0.2955ms)
+✔ sales cannot read another assignment or approve prices (0.1788ms)
+✔ content and viewer roles cannot access operational mutations (0.1632ms)
+✔ Quoted needs approved offer and delivery proof (0.2332ms)
+✔ assignment, closure and terminal states are guarded (0.1663ms)
+✔ each freight service validates required details without marketing opt-in (1.1479ms)
+✔ malformed input, spam, privacy omission and service-specific omissions fail (0.3877ms)
+✔ normalization has stable ordering, removes unrelated service fields and rejects unknown fields (1.9677ms)
+✔ local test gate cannot enable live intake, non-development or external origins (0.1996ms)
+✔ HTTP edge rejects missing origin, malformed JSON, oversized streaming payload and cross-site requests before database access (26.7875ms)
+✔ public interface and form dictionaries cover every locale, route, service and feedback state (1.5658ms)
+✔ retry backoff grows, caps and uses bounded jitter (0.989ms)
+✔ provider uses fixed endpoint, immutable message and stable idempotency key (21.5987ms)
+✔ provider classifies permanent and transient errors without exposing response bodies (2.4173ms)
+✔ quotation arithmetic preserves cents and rejects floating-point/scientific/negative values (1.4128ms)
+✔ draft validation rejects invalid dates, empty lines, unsupported currency and zero total (0.6556ms)
+✔ downloadable quotation escapes customer text and has no executable external content (0.5039ms)
+✔ quotation module requires an explicit development mode or approved live configuration (0.1322ms)
+✔ client identity accepts only signed cookie and verified edge attestation; forwarded headers never choose identity (24.5062ms)
+✔ network canonicalization prevents IPv6 text and mapped-IPv4 rotation bypass (5.864ms)
+✔ CSP requires unique nonce input and never enables unsafe script/style execution (0.4989ms)
+✔ SEO stays closed without all release gates and rejects placeholder/local/untrusted origins (1.5408ms)
+✔ canonical is self-referencing and hreflang is reciprocal with Chinese script and Thai default (0.8861ms)
+✔ unpublished/test pages never become indexable and missing locales are excluded (0.2557ms)
+✔ metadata is route-specific and JSON-LD cannot terminate its script or invent contacts/logo (0.3463ms)
+✔ all release flags are independently required; a known documentation origin is syntax-only, never company configuration (0.8184ms)
+✔ uncertain submissions reuse their original key and cannot silently create a new identity after edits (0.8971ms)
+✔ form text normalizes insignificant whitespace before calculating retry identity (0.1677ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1486.7388

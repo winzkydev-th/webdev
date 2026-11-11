@@ -12,3 +12,5 @@ button,input,select,textarea{font:inherit}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #87631d;outline-offset:3px}
 #content:focus{outline:none}
 @media(max-width:600px){header>nav:first-of-type{column-gap:12px;row-gap:4px}.languages{padding-left:0;border-left:0;margin-left:0}.brand{margin-right:auto}h1{font-size:clamp(30px,8vw,38px)}}
+
+.text-preserve{white-space:pre-wrap;overflow-wrap:anywhere}

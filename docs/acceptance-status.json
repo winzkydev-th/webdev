@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-10",
+  "asOf": "2026-11-11",
   "environment": "development with real PostgreSQL; synthetic OIDC/provider/scanner",
   "metric": "unweighted acceptance criteria with development evidence; not production readiness",
   "passedDevelopment": [
@@ -29,7 +29,7 @@
   },
   "pendingAcceptance": {
     "AC-13": "Pending approved company domain and actual-host SEO verification",
-    "AC-14": "Local security assessment completed: NOT PASSED; Medium M-01/M-02/M-03 and NOT TESTED production controls; awaiting owner review"
+    "AC-14": "PENDING ACCEPTANCE: Medium M-01/M-02/M-03 implemented and locally tested; owner review and real integration tests outstanding"
   },
   "ownerReviewRequired": {
     "criterion": "AC-11",
@@ -46,7 +46,7 @@
     ]
   },
   "securityReview": {
-    "status": "NOT PASSED",
+    "status": "PENDING ACCEPTANCE",
     "productionSecurityReadiness": "NOT READY",
     "confirmedFindings": {
       "critical": 0,
@@ -55,6 +55,14 @@
       "low": 0
     },
     "warning": "No confirmed Critical/High in bounded local work is not a guarantee; current advisory and production controls not tested",
-    "ownerReviewRequired": true
+    "ownerReviewRequired": true,
+    "remediation": {
+      "mediumImplementedPendingReview": 3,
+      "realMfa": "NOT TESTED",
+      "realMalwareEngine": "NOT TESTED",
+      "httpsTls": "NOT TESTED",
+      "currentAdvisories": "NOT TESTED — external connection declined by owner",
+      "cspToolingStyleWarning": "Requires independent normal-browser verification"
+    }
   }
 }

@@ -1,0 +1,18 @@
+
+> kpn-wagon-web@0.1.0 test:staff-http
+> node tests/staff-http-smoke.mjs
+
+{
+  "oidcCallbackAndCookie": "pass",
+  "anonymousDenied": "pass",
+  "roleScopedDashboard": "pass",
+  "forgedRoleAndCsrfDenied": "pass",
+  "httpSubmissionAssignmentStatusActivity": "pass",
+  "statusAndAssignmentHistory": "pass",
+  "reassignmentRevokesRead": "pass",
+  "lastOwnerProtection": "pass",
+  "initialCounts": {
+    "owner": 4,
+    "sales": 2
+  }
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "AC14R-attachments.log",
+    "bytes": 1315,
+    "sha256": "42923d00a5184962b57ac2fb57790d9958370da546472485d4d94d2fa5488fb6"
+  },
+  {
+    "name": "AC14R-build.log",
+    "bytes": 1363,
+    "sha256": "6896b9256d50857ce8c058921f65688555f41a54ceae01df09d56f280afdb645"
+  },
+  {
+    "name": "AC14R-cms-published-csp.jpg",
+    "bytes": 67899,
+    "sha256": "2143c0f00ad18709e31c19af08f1fa0fae10f313b0b39f7282895898414ccb7c"
+  },
+  {
+    "name": "AC14R-content.log",
+    "bytes": 1271,
+    "sha256": "3228ca4b93bbc26f12ed94f01a4aff1e6e48d3e8447babaa6be4f741105ae239"
+  },
+  {
+    "name": "AC14R-csp-browser-current.json",
+    "bytes": 158,
+    "sha256": "946e289b188e19f07e4aacec1bbec8660c47e2d5de286d3c6831234446361d8b"
+  },
+  {
+    "name": "AC14R-csp-browser-selftest.json",
+    "bytes": 158,
+    "sha256": "946e289b188e19f07e4aacec1bbec8660c47e2d5de286d3c6831234446361d8b"
+  },
+  {
+    "name": "AC14R-csp-final.json",
+    "bytes": 158,
+    "sha256": "946e289b188e19f07e4aacec1bbec8660c47e2d5de286d3c6831234446361d8b"
+  },
+  {
+    "name": "AC14R-csp-overlay-observation.json",
+    "bytes": 120,
+    "sha256": "f43c0268bfd884cd98e90195e8b2de17df1d754a1651bbb4bc90a628db9c62cc"
+  },
+  {
+    "name": "AC14R-csp-selftest.jpg",
+    "bytes": 12367,
+    "sha256": "d8e41ffbf834ad37ac7623179736f96bd411387bac40dd5f3ef5311700a3e260"
+  },
+  {
+    "name": "AC14R-form-conditional-final.json",
+    "bytes": 36233,
+    "sha256": "1d261782f2bd2455ac211dcfddb6ff6f8a0ddb267a772fab5beadcf7c6f4989f"
+  },
+  {
+    "name": "AC14R-form-submit-final.jpg",
+    "bytes": 60046,
+    "sha256": "a7cf1038bed6bf839fefd709ce538347446beaa196262ea8e96203fcd2111758"
+  },
+  {
+    "name": "AC14R-http-csp-final.json",
+    "bytes": 2296,
+    "sha256": "960b68309bfe48e61e393d45bd29519e66601c6119cf10b0bb4f00799be33f08"
+  },
+  {
+    "name": "AC14R-notifications.log",
+    "bytes": 1150,
+    "sha256": "e7276fd83ed4784feb3fd1830d0244733d5ccaf8a9db3000d93e4764db2d30a5"
+  },
+  {
+    "name": "AC14R-original-integrity.json",
+    "bytes": 2881,
+    "sha256": "9cca30898a53973658c2a99dd91abab3be7a048f7c6e5cc59a69ac7a6a472d27"
+  },
+  {
+    "name": "AC14R-public-browser-matrix.json",
+    "bytes": 11556,
+    "sha256": "a9bb63643094049c98b887ba5c3b3278d10d4d8bb3c629676b13ceda8b5f12fe"
+  },
+  {
+    "name": "AC14R-quotation-http-final.log",
+    "bytes": 294,
+    "sha256": "34ca27a498e90d121dd4ae8b797c264ddb4a3d943cd259b6e17d54ec4cacb463"
+  },
+  {
+    "name": "AC14R-quotations.log",
+    "bytes": 1532,
+    "sha256": "cdcf7d7df4306bc9d07ccbd412770f1d717a6c601697109b45c2eb8aa07ac6e0"
+  },
+  {
+    "name": "AC14R-remediation-evidence.json",
+    "bytes": 869,
+    "sha256": "3f518f6de24f7099300ea008e1e85fc740597859bd31cd6ce0e83955832043e0"
+  },
+  {
+    "name": "AC14R-remediation.log",
+    "bytes": 1180,
+    "sha256": "7371553cd8ae970dda2bdc57c27650c208813fd2c38bcc8ef446f46864454fd9"
+  },
+  {
+    "name": "AC14R-security-final.log",
+    "bytes": 900,
+    "sha256": "2fb59f6a6d5c73c736f4a8682b759478fb0376f1b6e9ba16b08ba80cc5561c51"
+  },
+  {
+    "name": "AC14R-security-inbox-desktop.jpg",
+    "bytes": 87465,
+    "sha256": "ff06762423be0c0cc1587cb73fe326b93fdcbbb5d96288ab3a85be64e1b8d904"
+  },
+  {
+    "name": "AC14R-security-inbox-mobile.jpg",
+    "bytes": 66773,
+    "sha256": "b9f016949a39c712572542ad66ecd2d737e52fa3d7708af128eefe91bac242e2"
+  },
+  {
+    "name": "AC14R-staff-auth.log",
+    "bytes": 1240,
+    "sha256": "03dcb053cc7de1a6f289fb3d04f07fdf86dd00c6700b742b10f8f3349e435078"
+  },
+  {
+    "name": "AC14R-staff-http-final.log",
+    "bytes": 448,
+    "sha256": "efd22904597cb7ae6d3fe6eb07dedb099d48d4e94f1d76f491bd6c4486b64478"
+  },
+  {
+    "name": "AC14R-staff-workspace.log",
+    "bytes": 1386,
+    "sha256": "318888f473b507d6a4a9a67e52b9e227fec85aee487710f700072d4fbe21eea7"
+  },
+  {
+    "name": "AC14R-typecheck.log",
+    "bytes": 73,
+    "sha256": "d347e0cc798374a536e06610317b94b121b894128028d69e3399b47bd7548ffa"
+  },
+  {
+    "name": "AC14R-unit-final.log",
+    "bytes": 3215,
+    "sha256": "1d52464e88a587bdcc345bae78fa9dbb81d4208152e274cfa41d5d96b12cbd15"
+  },
+  {
+    "name": "AC14R-unit.log",
+    "bytes": 2894,
+    "sha256": "3400cb4cf856419dc91c5fb8b34bbd67b7c61124b7549614de863bb761153dac"
+  }
+]
