@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-11",
+  "asOf": "2026-11-12",
   "environment": "development with real PostgreSQL; synthetic OIDC/provider/scanner",
   "metric": "unweighted acceptance criteria with development evidence; not production readiness",
   "passedDevelopment": [
@@ -29,7 +29,7 @@
   },
   "pendingAcceptance": {
     "AC-13": "Pending approved company domain and actual-host SEO verification",
-    "AC-14": "PENDING ACCEPTANCE: Medium M-01/M-02/M-03 implemented and locally tested; owner review and real integration tests outstanding"
+    "AC-14": "Owner approved M-01/M-02/M-03 for Local only; remaining AC-14 checks and real integrations pending"
   },
   "ownerReviewRequired": {
     "criterion": "AC-11",
@@ -46,7 +46,7 @@
     ]
   },
   "securityReview": {
-    "status": "PENDING ACCEPTANCE",
+    "status": "LOCAL REMEDIATION APPROVED — AC-14 PENDING",
     "productionSecurityReadiness": "NOT READY",
     "confirmedFindings": {
       "critical": 0,
@@ -57,12 +57,21 @@
     "warning": "No confirmed Critical/High in bounded local work is not a guarantee; current advisory and production controls not tested",
     "ownerReviewRequired": true,
     "remediation": {
-      "mediumImplementedPendingReview": 3,
       "realMfa": "NOT TESTED",
       "realMalwareEngine": "NOT TESTED",
       "httpsTls": "NOT TESTED",
       "currentAdvisories": "NOT TESTED — external connection declined by owner",
-      "cspToolingStyleWarning": "Requires independent normal-browser verification"
+      "cspToolingStyleWarning": "Requires independent normal-browser verification",
+      "localOwnerApproval": {
+        "status": "APPROVED",
+        "approvedOn": "2026-11-12",
+        "scope": [
+          "M-01",
+          "M-02",
+          "M-03"
+        ],
+        "evidenceCommit": "6b076aa"
+      }
     }
   }
 }
